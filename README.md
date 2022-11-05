@@ -30,7 +30,7 @@
       - Maybe a mini-game? 😂
     - Enables the player to remove plevel
 - Flower
-  - Spawn a growing plant object
+  - [x] Spawn a growing plant object
   - Has to be watered
   - After watering, it grows
   - Track how many watering charges have been dispatched to the flower
@@ -43,6 +43,7 @@
   - Calls zalévací cloud
 - Audio
   - Looping
+- Overwatering a plant spawns more plevel 😈
 - [x] Player movement
 - [x] Item swapping
 
