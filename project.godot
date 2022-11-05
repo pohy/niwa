@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Weed",
 "language": "GDScript",
-"path": "res://scripts/weed.gd"
+"path": "res://scripts/Weed.gd"
 } ]
 _global_script_class_icons={
 "Flower": "",
