@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://scripts/GrowingSprite.gd"
 }, {
 "base": "Node",
+"class": "OneShotPlayer",
+"language": "GDScript",
+"path": "res://scripts/OneShotPlayer.gd"
+}, {
+"base": "Node",
 "class": "PlayerItem",
 "language": "GDScript",
 "path": "res://scripts/PlayerItem.gd"
@@ -37,6 +42,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Flower": "",
 "GrowingSprite": "",
+"OneShotPlayer": "",
 "PlayerItem": "",
 "Weed": "",
 "WeedSpawner": ""
