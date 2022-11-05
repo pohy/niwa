@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/krok1.mp3-a59d117c75b957eca5b0e2f47851fdaf.mp3str"
+
+[deps]
+
+source_file="res://sounds/krok1.mp3"
+dest_files=[ "res://.import/krok1.mp3-a59d117c75b957eca5b0e2f47851fdaf.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
