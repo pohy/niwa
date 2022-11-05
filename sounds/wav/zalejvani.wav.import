@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/zalejvani.wav-067b10ee4431171fda542d4853ebe49d.sample"
+path="res://.import/zalejvani.wav-ded6bca3fefe37fec2ac01132538c847.sample"
 
 [deps]
 
-source_file="res://sounds/waw/zalejvani.wav"
-dest_files=[ "res://.import/zalejvani.wav-067b10ee4431171fda542d4853ebe49d.sample" ]
+source_file="res://sounds/wav/zalejvani.wav"
+dest_files=[ "res://.import/zalejvani.wav-ded6bca3fefe37fec2ac01132538c847.sample" ]
 
 [params]
 

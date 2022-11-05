@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/motyka3.wav-34a2744a78c39cb3456c9c69adca59ba.sample"
+path="res://.import/motyka3.wav-14956bb4a8e7fd176b77851c1f6ac769.sample"
 
 [deps]
 
-source_file="res://sounds/waw/motyka3.wav"
-dest_files=[ "res://.import/motyka3.wav-34a2744a78c39cb3456c9c69adca59ba.sample" ]
+source_file="res://sounds/wav/motyka3.wav"
+dest_files=[ "res://.import/motyka3.wav-14956bb4a8e7fd176b77851c1f6ac769.sample" ]
 
 [params]
 

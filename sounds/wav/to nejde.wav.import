@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/to nejde.wav-0c006a63f4734d28e0a3c0cfab4586a9.sample"
+path="res://.import/to nejde.wav-e2c8b3b2e07a66b6d59c9a1979e4c312.sample"
 
 [deps]
 
-source_file="res://sounds/waw/to nejde.wav"
-dest_files=[ "res://.import/to nejde.wav-0c006a63f4734d28e0a3c0cfab4586a9.sample" ]
+source_file="res://sounds/wav/to nejde.wav"
+dest_files=[ "res://.import/to nejde.wav-e2c8b3b2e07a66b6d59c9a1979e4c312.sample" ]
 
 [params]
 

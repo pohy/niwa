@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/zasazeni sazenicky.wav-6fb33c42e48203d82d3b9182b1af2a0c.sample"
+path="res://.import/zasazeni sazenicky.wav-990cf562b68bd9e9888467373426507f.sample"
 
 [deps]
 
-source_file="res://sounds/waw/zasazeni sazenicky.wav"
-dest_files=[ "res://.import/zasazeni sazenicky.wav-6fb33c42e48203d82d3b9182b1af2a0c.sample" ]
+source_file="res://sounds/wav/zasazeni sazenicky.wav"
+dest_files=[ "res://.import/zasazeni sazenicky.wav-990cf562b68bd9e9888467373426507f.sample" ]
 
 [params]
 

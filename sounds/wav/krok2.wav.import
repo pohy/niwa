@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/krok2.wav-44db585937f9dc8835caf480eaa1f746.sample"
+path="res://.import/krok2.wav-61efb237c6cb8f2245da6acd7d7fc99b.sample"
 
 [deps]
 
-source_file="res://sounds/waw/krok2.wav"
-dest_files=[ "res://.import/krok2.wav-44db585937f9dc8835caf480eaa1f746.sample" ]
+source_file="res://sounds/wav/krok2.wav"
+dest_files=[ "res://.import/krok2.wav-61efb237c6cb8f2245da6acd7d7fc99b.sample" ]
 
 [params]
 

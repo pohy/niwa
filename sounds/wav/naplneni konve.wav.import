@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/naplneni konve.wav-f3da322b32fdd1f49f5ebf1708c42099.sample"
+path="res://.import/naplneni konve.wav-c8a1c097d0516e67388216a14a9042b2.sample"
 
 [deps]
 
-source_file="res://sounds/waw/naplneni konve.wav"
-dest_files=[ "res://.import/naplneni konve.wav-f3da322b32fdd1f49f5ebf1708c42099.sample" ]
+source_file="res://sounds/wav/naplneni konve.wav"
+dest_files=[ "res://.import/naplneni konve.wav-c8a1c097d0516e67388216a14a9042b2.sample" ]
 
 [params]
 

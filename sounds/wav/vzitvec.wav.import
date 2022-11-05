@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/vzitvec.wav-ae36fc18a9f106aa7016529bf55c41d1.sample"
+path="res://.import/vzitvec.wav-aa7d01a4012a0fe359f6b2a0b582f378.sample"
 
 [deps]
 
-source_file="res://sounds/waw/vzitvec.wav"
-dest_files=[ "res://.import/vzitvec.wav-ae36fc18a9f106aa7016529bf55c41d1.sample" ]
+source_file="res://sounds/wav/vzitvec.wav"
+dest_files=[ "res://.import/vzitvec.wav-aa7d01a4012a0fe359f6b2a0b582f378.sample" ]
 
 [params]
 
