@@ -6,6 +6,7 @@ export var wilted_texture: Texture
 onready var ray_cast := $RayCast2D as RayCast2D
 onready var growing_sprite := $GrowingSprite as GrowingSprite
 onready var wilted_sprite := $WiltedSprite as Sprite
+onready var wilting_player := $WiltingPlayer as AnimationPlayer
 
 var placed: bool = false
 
@@ -28,7 +29,10 @@ func try_placing_flower():
 	placed = true
 
 func wilt():
+	wilting_player.play("WiltAnimation")
 	# growing_sprite.stop_growth()
 	growing_sprite.set_process(false)
 	growing_sprite.visible = false
+	wilted_sprite.visible = true
+	print_debug("wilting :(")
 

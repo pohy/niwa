@@ -38,8 +38,6 @@ shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 603, 608 )
-speed = null
-min_plant_distance = null
 
 [node name="FlowerBox" parent="." instance=ExtResource( 1 )]
 position = Vector2( 672, 620 )

@@ -1,7 +1,11 @@
 # Niwa
 
 ## Questions
-- **TALK:** How about that wilted flowers stay wilted and hinder the players strength to fight plevel?
+- How do we communicate that flower has been watered?
+  - Wet ground below flower that dries up?
+
+- _Pre-lose_ state?
+- How about that wilted flowers stay wilted and hinder the players strength to fight plevel?
   - Maybe slow them down?
   - Maybe the plevel grows stronger? -> Takes more hits to destroy?
 - Does destroying plevel give something to the player?
@@ -21,6 +25,7 @@
 - Zooming out camera
   - Based on progression
 - Items
+  - Let the player drop an item anywhere
   - Flower sazeničky bedýnka
     - Holds up to 4 sazaničky
     - Spawns one of _n_ plants at a time
@@ -30,26 +35,27 @@
     - Enables the player to water the plants
   - Motyka
     - [x] Removes plevel after a ~~duration~~ `growth_stages.size()` hits
-      - Maybe a mini-game? 😂
-    - Enables the player to remove plevel
+      - ~~Maybe a mini-game? 😂~~
+    - [x] Enables the player to remove plevel
 - Flower
   - [x] Spawn a growing plant object
   - Has to be watered
   - After watering, it grows
   - Track how many watering charges have been dispatched to the flower
-  - Also has a wilted stage
-    - Activates when the plevel reaches its final growth stage
+  - [x] Also has a wilted stage
+    - [x] Despawn -> fade out and destroy
+    - [x] Activates when the plevel reaches its final growth stage
 - Plevel
   - [x] Spawns ?randomly?
     - Likely nearby flowers
   - [x] Can be removed by the player
     - ~~After a timeout aka. _holding_ the motyka activated~~
   - [x] Has three stages
-  - When it grows to the final stage it wilts the overlapping flowers
+  - [x] When it grows to the final stage it wilts the overlapping flowers
 - ?Meditation
   - Calls zalévací cloud
-- Audio
-  - Looping
+- [x] Audio
+  - [x] Looping
 - Overwatering a plant spawns more plevel 😈
 - [x] Disallow planting overlapping flowers
 - [x] Player movement

@@ -14,8 +14,6 @@ extents = Vector2( 32, 32 )
 [node name="Player" type="Area2D"]
 position = Vector2( 520, 394 )
 script = ExtResource( 1 )
-speed = null
-min_plant_distance = null
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

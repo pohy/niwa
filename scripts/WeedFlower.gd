@@ -20,4 +20,7 @@ func hit():
 
 func _on_GrowingSprite_growth_finished():
 	# TODO: ?Wilt overlapping flowers
-	pass # Replace with function body.
+	for area in get_overlapping_areas():
+		if "flower" in area.get_groups():
+			var flower: Flower = area
+			flower.wilt()
