@@ -13,9 +13,13 @@ var active_item: PlayerItem = null
 var last_colliding_item: PlayerItem = null
 
 onready var planting_area := $PlantingArea as Area2D
+
+#sounds
 onready var walking_sounds := $WalkingSounds as OneShotPlayer
 onready var motyka_sounds := $MotykaSounds as OneShotPlayer
 onready var pickup_sound := $PickupSound as AudioStreamPlayer2D
+onready var nejde_sound := $ToNejdeSound as AudioStreamPlayer2D
+
 
 func _ready():
 	pass
@@ -51,11 +55,14 @@ func use_active_item():
 			if current_overlapping_weed == null:
 				return
 			current_overlapping_weed.hit()
+			motyka_sounds.play()
+			
 			
 
 func spawn_plant():
 	if not can_plant():
 		print_debug("Cannot plant, nice")
+		nejde_sound.play()
 		return
 	var flower = flower_scene.instance()
 	flower.position = position
