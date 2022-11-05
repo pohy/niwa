@@ -27,7 +27,7 @@ func _on_SpawnTimer_timeout():
 	if next_spawn_position < 0:
 		print_debug("TODO: All weed spawn positions exhausted")
 		return
-	print_debug("used positions: %s" % String(used_positions))
+	# print_debug("used positions: %s" % String(used_positions))
 	var distance_between_spawn_positions = (spawn_range.y / max_weeds)
 	weed.position = Vector2(
 		# distance_between_spawn_positions / 2 +

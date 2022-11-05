@@ -44,9 +44,10 @@ func use_active_item():
 		PlayerItem.Type.FlowerBox:
 			spawn_plant()
 		PlayerItem.Type.Hoe:
-			if not is_currently_overlapping_node_in_group("weed"):
+			var current_overlapping_weed: Weed = get_first_overlapping_area_in_group("weed")
+			if current_overlapping_weed == null:
 				return
-			print_debug("TODO: Weeding")
+			current_overlapping_weed.hit()
 			
 
 func spawn_plant():
@@ -73,12 +74,22 @@ func apply_movement(delta: float):
 		
 	position += input * speed * delta
 
+func can_plant():
+	return not is_currently_overlapping_node_in_group("flower")
+
 func is_currently_overlapping_node_in_group(group_name: String):
+	# var overlapping_areas = planting_area.get_overlapping_areas()
+	# for area in overlapping_areas:
+	# 	if group_name in area.get_groups():
+	# 		return true
+	# return false
+	return get_first_overlapping_area_in_group(group_name) != null
+
+func get_first_overlapping_area_in_group(group_name: String):
 	var overlapping_areas = planting_area.get_overlapping_areas()
 	for area in overlapping_areas:
 		if group_name in area.get_groups():
-			return true
-	return false
+			return area
+			
+	return null
 
-func can_plant():
-	return not is_currently_overlapping_node_in_group("flower")

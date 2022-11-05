@@ -11,11 +11,11 @@ var placed: bool = false
 func _ready():
 	# TODO: Throw when no growth texture is set .empty()
 	growing_sprite.visible = false;
-	# sprite.visible = false;
 	growing_sprite.start_next_stage_growth()
 
 func _process(delta):
-	try_placing_flower()
+	if not placed:
+		try_placing_flower()
 
 func try_placing_flower():
 	if placed || ray_cast.get_collider() == null:
@@ -23,6 +23,5 @@ func try_placing_flower():
 
 	position = ray_cast.get_collision_point()
 	ray_cast.enabled = false
-	# sprite.visible = true
 	growing_sprite.visible = true
 	placed = true
