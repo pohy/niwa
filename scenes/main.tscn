@@ -15,14 +15,14 @@ extents = Vector2( 64, 4 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 606, 504 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2( 513, 568 )
 scale = Vector2( 8, 8 )
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+[node name="Sprite" type="Sprite" parent="Ground"]
 texture = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource( 2 )
 
 [node name="FlowerBox" parent="." instance=ExtResource( 1 )]
