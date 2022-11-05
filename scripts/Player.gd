@@ -6,8 +6,7 @@ extends Area2D
 # var b = "text"
 export var speed: float = 20
 
-onready var timer := $Timer as Timer
-
+var flower_scene: PackedScene = preload("res://scenes/flower.tscn")
 var active_item: PlayerItem = null
 # TODO: Can items overlap? Should we solve that when dropping items?
 var last_colliding_item: PlayerItem = null
@@ -23,6 +22,17 @@ func _process(delta: float):
 
 	if active_item != null:
 		active_item.position = position
+
+	if active_item != null and Input.is_action_just_pressed("primary"):
+		use_active_item()
+
+func use_active_item():
+	match active_item.type:
+		PlayerItem.Type.FlowerBox:
+			# TODO: Check whether there is room for the plant to be planted
+			var flower = flower_scene.instance()
+			flower.position = position
+			get_node("/root").add_child(flower)
 
 func swap_items():
 	# TODO: Unparent currently active item

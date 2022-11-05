@@ -13,28 +13,28 @@ extents = Vector2( 64, 4 )
 [node name="main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 606, 504 )
+position = Vector2( 603, 608 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 513, 568 )
-scale = Vector2( 8, 8 )
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2( 640, 680 )
+scale = Vector2( 10, 10 )
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+[node name="Sprite" type="Sprite" parent="Ground"]
 texture = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource( 2 )
 
 [node name="FlowerBox" parent="." instance=ExtResource( 1 )]
-position = Vector2( 257, 516 )
+position = Vector2( 254, 620 )
 texture = ExtResource( 4 )
 type = 1
 
 [node name="Hoe" parent="." instance=ExtResource( 1 )]
-position = Vector2( 377, 513 )
+position = Vector2( 374, 617 )
 texture = ExtResource( 5 )
 
 [node name="WateringCan" parent="." instance=ExtResource( 1 )]
-position = Vector2( 131, 514 )
+position = Vector2( 128, 618 )
 texture = ExtResource( 6 )
 type = 2
