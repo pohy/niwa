@@ -15,10 +15,11 @@ var last_colliding_item: PlayerItem = null
 onready var planting_area := $PlantingArea as Area2D
 
 #sounds
-onready var walking_sounds := $WalkingSounds as OneShotPlayer
-onready var motyka_sounds := $MotykaSounds as OneShotPlayer
-onready var pickup_sound := $PickupSound as AudioStreamPlayer2D
-onready var nejde_sound := $ToNejdeSound as AudioStreamPlayer2D
+onready var walking_sounds := $Sounds/WalkingSounds as OneShotPlayer
+onready var motyka_sounds := $Sounds/MotykaSounds as OneShotPlayer
+onready var pickup_sound := $Sounds/PickupSound as AudioStreamPlayer2D
+onready var nejde_sound := $Sounds/ToNejdeSound as AudioStreamPlayer2D
+onready var zasazeni_sound := $Sounds/ZasazeniSound as AudioStreamPlayer2D
 
 
 func _ready():
@@ -69,9 +70,9 @@ func spawn_plant():
 	var root = get_node("/root")
 	root.add_child(flower)
 	root.move_child(flower, 0)
+	zasazeni_sound.play()
 	
 	
-
 func swap_items():
 	# TODO: Unparent currently active item
 	active_item = last_colliding_item
