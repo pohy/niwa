@@ -11,5 +11,5 @@ dest_files=[ "res://.import/to nejde.mp3-ed71fc0cf4f5bf1240c64f618757693b.mp3str
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

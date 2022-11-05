@@ -13,7 +13,9 @@ var active_item: PlayerItem = null
 var last_colliding_item: PlayerItem = null
 
 onready var planting_area := $PlantingArea as Area2D
-onready var one_shot_player := $OneShotPlayer as OneShotPlayer
+onready var walking_sounds := $WalkingSounds as OneShotPlayer
+onready var motyka_sounds := $MotykaSounds as OneShotPlayer
+onready var pickup_sound := $PickupSound as AudioStreamPlayer2D
 
 func _ready():
 	pass
@@ -67,6 +69,8 @@ func swap_items():
 	# TODO: Unparent currently active item
 	active_item = last_colliding_item
 	last_colliding_item = null
+	pickup_sound.play()
+	
 
 func apply_movement(delta: float):
 	var input = Vector2.ZERO
@@ -76,10 +80,8 @@ func apply_movement(delta: float):
 	if Input.is_action_pressed("right"):
 		input.x = speed
 
-	if input.length() > 0:
-		one_shot_player.play()
-	elif one_shot_player.playing:
-		one_shot_player.stop()
+	if input.length() > 0 and not walking_sounds.playing:
+		walking_sounds.play()
 		
 		
 	position += input * speed * delta
