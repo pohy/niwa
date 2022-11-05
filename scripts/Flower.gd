@@ -2,6 +2,7 @@ class_name Flower
 extends Area2D
 
 export(Array, Texture) var growth_textures
+export var wilted_texture: Texture
 
 onready var ray_cast := $RayCast2D as RayCast2D
 onready var sprite := $Sprite as Sprite
