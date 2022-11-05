@@ -42,15 +42,23 @@ func _on_Player_area_exited(area):
 func use_active_item():
 	match active_item.type:
 		PlayerItem.Type.FlowerBox:
-			# TODO: Check whether there is room for the plant to be planted
-			if not can_plant():
-				print_debug("Cannot plant, nice")
+			spawn_plant()
+		PlayerItem.Type.Hoe:
+			var current_overlapping_weed: Weed = get_first_overlapping_area_in_group("weed")
+			if current_overlapping_weed == null:
 				return
-			var flower = flower_scene.instance()
-			flower.position = position
-			var root = get_node("/root")
-			root.add_child(flower)
-			root.move_child(flower, 0)
+			current_overlapping_weed.hit()
+			
+
+func spawn_plant():
+	if not can_plant():
+		print_debug("Cannot plant, nice")
+		return
+	var flower = flower_scene.instance()
+	flower.position = position
+	var root = get_node("/root")
+	root.add_child(flower)
+	root.move_child(flower, 0)
 
 func swap_items():
 	# TODO: Unparent currently active item
@@ -67,8 +75,21 @@ func apply_movement(delta: float):
 	position += input * speed * delta
 
 func can_plant():
+	return not is_currently_overlapping_node_in_group("flower")
+
+func is_currently_overlapping_node_in_group(group_name: String):
+	# var overlapping_areas = planting_area.get_overlapping_areas()
+	# for area in overlapping_areas:
+	# 	if group_name in area.get_groups():
+	# 		return true
+	# return false
+	return get_first_overlapping_area_in_group(group_name) != null
+
+func get_first_overlapping_area_in_group(group_name: String):
 	var overlapping_areas = planting_area.get_overlapping_areas()
 	for area in overlapping_areas:
-		if area is Flower:
-			return false
-	return true
+		if group_name in area.get_groups():
+			return area
+			
+	return null
+
