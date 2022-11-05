@@ -6,14 +6,25 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=5
+config_version=4
 
 [application]
 
-config/name="niwa"
-config/features=PackedStringArray("4.0", "Mobile")
-config/icon="res://icon.svg"
+config/name="niwa3.5"
+run/main_scene="res://main.tscn"
+config/icon="res://icon.png"
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
 
 [rendering]
 
-renderer/rendering_method="mobile"
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
