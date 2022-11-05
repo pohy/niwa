@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/krok2.wav-61efb237c6cb8f2245da6acd7d7fc99b.sample"
+
+[deps]
+
+source_file="res://sounds/wav/krok2.wav"
+dest_files=[ "res://.import/krok2.wav-61efb237c6cb8f2245da6acd7d7fc99b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
