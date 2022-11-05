@@ -13,6 +13,7 @@ var active_item: PlayerItem = null
 var last_colliding_item: PlayerItem = null
 
 onready var planting_area := $PlantingArea as Area2D
+onready var one_shot_player := $OneShotPlayer as OneShotPlayer
 
 func _ready():
 	pass
@@ -71,6 +72,11 @@ func apply_movement(delta: float):
 		input.x = -speed
 	if Input.is_action_pressed("right"):
 		input.x = speed
+
+	if input.length() > 0:
+		one_shot_player.play()
+	elif one_shot_player.playing:
+		one_shot_player.stop()
 		
 	position += input * speed * delta
 
