@@ -14,8 +14,13 @@ extents = Vector2( 64, 4 )
 
 [node name="main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 603, 608 )
+[node name="WeedSpawner" type="Node2D" parent="."]
+script = ExtResource( 8 )
+ground_level = 640.0
+
+[node name="SpawnTimer" type="Timer" parent="WeedSpawner"]
+one_shot = true
+autostart = true
 
 [node name="Ground" type="Area2D" parent="."]
 position = Vector2( 640, 680 )
@@ -28,6 +33,11 @@ texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource( 2 )
+
+[node name="Weed" parent="." instance=ExtResource( 7 )]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 603, 608 )
 
 [node name="FlowerBox" parent="." instance=ExtResource( 1 )]
 position = Vector2( 672, 620 )
@@ -43,7 +53,4 @@ position = Vector2( 128, 618 )
 texture = ExtResource( 6 )
 type = 2
 
-[node name="Weed" parent="." instance=ExtResource( 7 )]
-
-[node name="WeedSpawner" type="Node" parent="."]
-script = ExtResource( 8 )
+[connection signal="timeout" from="WeedSpawner/SpawnTimer" to="WeedSpawner" method="_on_SpawnTimer_timeout"]

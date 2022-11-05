@@ -48,7 +48,9 @@ func use_active_item():
 				return
 			var flower = flower_scene.instance()
 			flower.position = position
-			get_node("/root").add_child(flower)
+			var root = get_node("/root")
+			root.add_child(flower)
+			root.move_child(flower, 0)
 
 func swap_items():
 	# TODO: Unparent currently active item
