@@ -1,6 +1,8 @@
 class_name GrowingSprite
 extends Node2D
 
+signal growth_finished
+
 export(Array, Texture) var growth_textures
 export var growth_time_range: Vector2 = Vector2(1, 5)
 
@@ -39,13 +41,17 @@ func revert_growth_stage():
 
 func update_growth_stage(addition: int):
 	var next_growth_stage = current_growth_stage + addition
-	print_debug("next growth stage: %s" % next_growth_stage)
+	# print_debug("next growth stage: %s" % next_growth_stage)
 	# TODO: Really >= ?
 	if next_growth_stage < 0 or next_growth_stage >= growth_textures.size():
 		# TODO: Emit a signal that the growy ting has reached its final stage
+		emit_signal("growth_finished")
 		return
 
 	current_growth_stage = next_growth_stage
 	# TODO: Emit signal that a stage has been reached
 	sprite.texture = growth_textures[current_growth_stage]
 	growth_timer.start(rand_range(growth_time_range.x, growth_time_range.y))
+
+func stop_growth():
+	growth_timer.stop()

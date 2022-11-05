@@ -79,7 +79,8 @@ func apply_movement(delta: float):
 	position += input * speed * delta
 
 func can_plant():
-	return not is_currently_overlapping_node_in_group("flower")
+	# TODO: Prevent when overlapping weed
+	return not is_currently_overlapping_node_in_group("flower") and not is_currently_overlapping_node_in_group("weed")
 
 func is_currently_overlapping_node_in_group(group_name: String):
 	# var overlapping_areas = planting_area.get_overlapping_areas()
