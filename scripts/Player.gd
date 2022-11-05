@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 
 # Declare member variables here. Examples:
@@ -8,18 +8,42 @@ export var speed: float = 20
 
 onready var timer := $Timer as Timer
 
+var active_item: PlayerItem = null
+# TODO: Can items overlap? Should we solve that when dropping items?
+var last_colliding_item: PlayerItem = null
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var velocity = Vector2.DOWN * 9.81
-	if Input.is_action_pressed("ui_left"):
-		velocity.x = -speed
-	if Input.is_action_pressed("ui_right"):
-		velocity.x = speed
+func _process(delta: float):
+	apply_movement(delta)
+
+	if last_colliding_item is PlayerItem and Input.is_action_just_pressed("secondary"):
+		swap_items()
+
+	if active_item != null:
+		active_item.position = position
+
+func swap_items():
+	# TODO: Unparent currently active item
+	active_item = last_colliding_item
+	last_colliding_item = null
+
+func apply_movement(delta: float):
+	var input = Vector2.ZERO
+	if Input.is_action_pressed("left"):
+		input.x = -speed
+	if Input.is_action_pressed("right"):
+		input.x = speed
 		
-	if velocity.length() > 0:
-		move_and_slide(velocity * speed)
+	position += input * speed * delta
+
+func _on_Player_area_entered(area):
+	if area is PlayerItem:
+		last_colliding_item = area
+		# var item = area as PlayerItem
+		# print_debug("Item type: %s" % item.type)
+
+func _on_Player_area_exited(area):
+	if area is PlayerItem:
+		last_colliding_item = null

@@ -1,16 +1,40 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Sprite.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://scenes/item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/ground.png" type="Texture" id=3]
+[ext_resource path="res://assets/flower-box.png" type="Texture" id=4]
+[ext_resource path="res://assets/shovel.png" type="Texture" id=5]
+[ext_resource path="res://assets/watering-can.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 64, 4 )
 
 [node name="main" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 494, 257 )
-texture = ExtResource( 2 )
-script = ExtResource( 1 )
-speed = 800.0
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 606, 504 )
 
-[node name="Timer" type="Timer" parent="Sprite"]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 513, 568 )
+scale = Vector2( 8, 8 )
 
-[connection signal="timeout" from="Sprite/Timer" to="Sprite" method="_on_Timer_timeout"]
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="FlowerBox" parent="." instance=ExtResource( 1 )]
+position = Vector2( 257, 516 )
+texture = ExtResource( 4 )
+type = 1
+
+[node name="Hoe" parent="." instance=ExtResource( 1 )]
+position = Vector2( 377, 513 )
+texture = ExtResource( 5 )
+
+[node name="WateringCan" parent="." instance=ExtResource( 1 )]
+position = Vector2( 131, 514 )
+texture = ExtResource( 6 )
+type = 2
