@@ -19,7 +19,6 @@ extents = Vector2( 64, 4 )
 script = ExtResource( 8 )
 ground_level = 640.0
 spawn_range = Vector2( 20, 1260 )
-spawn_positions_jitter = 2.0
 
 [node name="SpawnTimer" type="Timer" parent="WeedSpawner"]
 one_shot = true
@@ -41,6 +40,8 @@ shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 603, 608 )
+speed = null
+min_plant_distance = null
 
 [node name="FlowerBox" parent="." instance=ExtResource( 1 )]
 position = Vector2( 672, 620 )

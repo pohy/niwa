@@ -59,6 +59,8 @@ func spawn_plant():
 	var root = get_node("/root")
 	root.add_child(flower)
 	root.move_child(flower, 0)
+	
+	
 
 func swap_items():
 	# TODO: Unparent currently active item
@@ -69,8 +71,10 @@ func apply_movement(delta: float):
 	var input = Vector2.ZERO
 	if Input.is_action_pressed("left"):
 		input.x = -speed
+		
 	if Input.is_action_pressed("right"):
 		input.x = speed
+		
 		
 	position += input * speed * delta
 

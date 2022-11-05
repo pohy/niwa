@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/naplneniKonve.mp3-57bad83fdbfa47ba385ee96981834dc1.mp3str"
+
+[deps]
+
+source_file="res://sounds/naplneniKonve.mp3"
+dest_files=[ "res://.import/naplneniKonve.mp3-57bad83fdbfa47ba385ee96981834dc1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
