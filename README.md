@@ -1,6 +1,9 @@
 # Niwa
 
 ## Questions
+- **TALK:** How about that wilted flowers stay wilted and hinder the players strength to fight plevel?
+  - Maybe slow them down?
+  - Maybe the plevel grows stronger? -> Takes more hits to destroy?
 - Does destroying plevel give something to the player?
   - Maybe gives them a sazenička? -> Yes, to bedýnka
   - Maybe gives them a speed boost
@@ -26,7 +29,7 @@
     - Has only _n_ charges
     - Enables the player to water the plants
   - Motyka
-    - Removes plevel after a duration
+    - [x] Removes plevel after a ~~duration~~ `growth_stages.size()` hits
       - Maybe a mini-game? 😂
     - Enables the player to remove plevel
 - Flower
@@ -37,11 +40,11 @@
   - Also has a wilted stage
     - Activates when the plevel reaches its final growth stage
 - Plevel
-  - Spawns ?randomly?
+  - [x] Spawns ?randomly?
     - Likely nearby flowers
-  - Can be removed by the player
-    - After a timeout aka. _holding_ the motyka activated
-  - Has three stages
+  - [x] Can be removed by the player
+    - ~~After a timeout aka. _holding_ the motyka activated~~
+  - [x] Has three stages
   - When it grows to the final stage it wilts the overlapping flowers
 - ?Meditation
   - Calls zalévací cloud

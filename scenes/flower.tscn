@@ -28,3 +28,8 @@ shape = ExtResource( 8 )
 [node name="GrowingSprite" parent="." instance=ExtResource( 1 )]
 growth_textures = [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 4 ) ]
 growth_time_range = Vector2( 1, 3 )
+
+[node name="WiltedSprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -8 )
+texture = ExtResource( 7 )
