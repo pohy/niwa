@@ -34,16 +34,21 @@
   - Has to be watered
   - After watering, it grows
   - Track how many watering charges have been dispatched to the flower
+  - Also has a wilted stage
+    - Activates when the plevel reaches its final growth stage
 - Plevel
   - Spawns ?randomly?
     - Likely nearby flowers
   - Can be removed by the player
     - After a timeout aka. _holding_ the motyka activated
+  - Has three stages
+  - When it grows to the final stage it wilts the overlapping flowers
 - ?Meditation
   - Calls zalévací cloud
 - Audio
   - Looping
 - Overwatering a plant spawns more plevel 😈
+- [x] Disallow planting overlapping flowers
 - [x] Player movement
 - [x] Item swapping
 

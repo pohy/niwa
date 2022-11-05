@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://assets/flower-box.png" type="Texture" id=4]
 [ext_resource path="res://assets/shovel.png" type="Texture" id=5]
 [ext_resource path="res://assets/watering-can.png" type="Texture" id=6]
+[ext_resource path="res://scenes/weed.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/WeedSpawner.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 64, 4 )
@@ -40,3 +42,8 @@ texture = ExtResource( 5 )
 position = Vector2( 128, 618 )
 texture = ExtResource( 6 )
 type = 2
+
+[node name="Weed" parent="." instance=ExtResource( 7 )]
+
+[node name="WeedSpawner" type="Node" parent="."]
+script = ExtResource( 8 )

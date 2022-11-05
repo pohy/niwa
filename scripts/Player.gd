@@ -5,11 +5,14 @@ extends Area2D
 # var a = 2
 # var b = "text"
 export var speed: float = 20
+export var min_plant_distance: float = 8
 
 var flower_scene: PackedScene = preload("res://scenes/flower.tscn")
 var active_item: PlayerItem = null
 # TODO: Can items overlap? Should we solve that when dropping items?
 var last_colliding_item: PlayerItem = null
+
+onready var planting_area := $PlantingArea as Area2D
 
 func _ready():
 	pass
@@ -26,10 +29,23 @@ func _process(delta: float):
 	if active_item != null and Input.is_action_just_pressed("primary"):
 		use_active_item()
 
+func _on_Player_area_entered(area):
+	if area is PlayerItem:
+		last_colliding_item = area
+		# var item = area as PlayerItem
+		# print_debug("Item type: %s" % item.type)
+
+func _on_Player_area_exited(area):
+	if area is PlayerItem:
+		last_colliding_item = null
+
 func use_active_item():
 	match active_item.type:
 		PlayerItem.Type.FlowerBox:
 			# TODO: Check whether there is room for the plant to be planted
+			if not can_plant():
+				print_debug("Cannot plant, nice")
+				return
 			var flower = flower_scene.instance()
 			flower.position = position
 			get_node("/root").add_child(flower)
@@ -48,12 +64,9 @@ func apply_movement(delta: float):
 		
 	position += input * speed * delta
 
-func _on_Player_area_entered(area):
-	if area is PlayerItem:
-		last_colliding_item = area
-		# var item = area as PlayerItem
-		# print_debug("Item type: %s" % item.type)
-
-func _on_Player_area_exited(area):
-	if area is PlayerItem:
-		last_colliding_item = null
+func can_plant():
+	var overlapping_areas = planting_area.get_overlapping_areas()
+	for area in overlapping_areas:
+		if area is Flower:
+			return false
+	return true
