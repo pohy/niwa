@@ -27,7 +27,7 @@
 - Zooming out camera
   - Based on progression
 - Player
-  - Animation
+  - **PRIO** Pick up animation
 - Items
   - [ ] 🐛 Dropping/swapping items messes with the collision shape of flower box. WTF?!
   - [x] Let the player drop an item anywhere

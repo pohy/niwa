@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -13,8 +13,6 @@
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/Scaling_Ref.png" type="Texture" id=12]
 [ext_resource path="res://scripts/Music.gd" type="Script" id=13]
-[ext_resource path="res://sounds/wav/music/loop2.wav" type="AudioStream" id=14]
-[ext_resource path="res://sounds/wav/music/loop1.wav" type="AudioStream" id=15]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=16]
 [ext_resource path="res://assets/Fog_end/fog_end_7.png" type="Texture" id=17]
 [ext_resource path="res://assets/Fog_end/fog_end_6.png" type="Texture" id=18]
@@ -24,6 +22,7 @@
 [ext_resource path="res://assets/Fog_end/fog_end_2.png" type="Texture" id=22]
 [ext_resource path="res://assets/Fog_end/fog_end_3.png" type="Texture" id=23]
 [ext_resource path="res://assets/Fog_end/fog_end_4.png" type="Texture" id=24]
+[ext_resource path="res://sounds/wav/music/mainHudba.mp3" type="AudioStream" id=25]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 64, 4 )
@@ -67,10 +66,18 @@ position = Vector2( 320, 280 )
 script = ExtResource( 8 )
 ground_level = 640.0
 spawn_range = Vector2( -150, 1720 )
+spawn_rate_range = Vector2( 3, 5 )
 spawn_positions_jitter = 20.0
 
 [node name="SpawnTimer" type="Timer" parent="WeedSpawner"]
 one_shot = true
+
+[node name="DelayTimer" type="Timer" parent="WeedSpawner"]
+wait_time = 20.0
+autostart = true
+
+[node name="SpawnSpeedTimer" type="Timer" parent="WeedSpawner"]
+wait_time = 25.0
 autostart = true
 
 [node name="Well" parent="." instance=ExtResource( 9 )]
@@ -106,12 +113,13 @@ stream = ExtResource( 7 )
 volume_db = -6.118
 autoplay = true
 
-[node name="Music_Loop_1" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource( 15 )
+[node name="Main_music" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 25 )
 volume_db = -6.0
+autoplay = true
 
-[node name="Music_Loop_2" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource( 14 )
+[node name="End_music" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 7 )
 volume_db = -6.0
 
 [node name="Lanterns" type="Node2D" parent="."]
@@ -141,4 +149,6 @@ animation = "fade_out"
 
 [connection signal="max_weeds_grown" from="WeedSpawner" to="Game" method="_on_WeedSpawner_max_weeds_grown"]
 [connection signal="timeout" from="WeedSpawner/SpawnTimer" to="WeedSpawner" method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="WeedSpawner/DelayTimer" to="WeedSpawner" method="_on_DelayTimer_timeout"]
+[connection signal="timeout" from="WeedSpawner/SpawnSpeedTimer" to="WeedSpawner" method="_on_SpawnSpeedTimer_timeout"]
 [connection signal="animation_finished" from="Game/Fog" to="Game" method="_on_Fog_animation_finished"]

@@ -36,6 +36,10 @@ func _on_SpawnTimer_timeout():
 		# print_debug("used positions: %s" % String(used_positions))
 		var distance_between_spawn_positions = ((abs(spawn_range.x) + abs(spawn_range.y)) / max_weeds)
 		var weed = weed_scene.instance()
+		
+		# weed.growing_sprite.spawn_rate_range = Vector2()
+		
+		
 		weed.position = Vector2(
 			# distance_between_spawn_positions / 2 +
 				spawn_range.x +
@@ -98,3 +102,34 @@ func get_used_positions():
 func swap_weeds():
 	for weed in existing_weeds:
 		weed.swap_to_color()
+
+func _on_DelayTimer_timeout():
+	spawn_timer.start()
+
+
+var spawn_counter = 0
+
+func _on_SpawnSpeedTimer_timeout():
+	
+	spawn_counter += 1
+	
+	if spawn_counter == 1:
+		spawn_rate_range = Vector2(4,6)
+		
+	if spawn_counter == 2:
+		spawn_rate_range = Vector2(3,5)
+		
+	if spawn_counter == 3:
+		spawn_rate_range = Vector2(3,4)
+		
+	if spawn_counter == 5:
+		spawn_rate_range = Vector2(2,4)
+	
+	if spawn_counter == 6:
+		spawn_rate_range = Vector2(2,2)
+		
+	if spawn_counter == 7:
+		spawn_rate_range = Vector2(1,1)
+	
+	if spawn_counter == 8:
+		spawn_rate_range = Vector2(0.5,0.5)
