@@ -1,9 +1,5 @@
 extends Area2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 export var speed: float = 20
 export var min_plant_distance: float = 8
 
@@ -50,26 +46,35 @@ func _on_Player_area_exited(area):
 func use_active_item():
 	match active_item.type:
 		PlayerItem.Type.FlowerBox:
-			spawn_plant()
+			use_flower_box()
 		PlayerItem.Type.Hoe:
-			var current_overlapping_weed: Weed = get_first_overlapping_area_in_group("weed")
-			if current_overlapping_weed == null:
-				return
-			current_overlapping_weed.hit()
-			motyka_sounds.play()
-			
-			
+			use_hoe()
 
-func spawn_plant():
+func use_hoe():
+	var current_overlapping_weed: Weed = Util.get_first_overlapping_area_in_group(planting_area, "weed")
+	if current_overlapping_weed == null:
+		return
+	current_overlapping_weed.hit()
+	motyka_sounds.play()
+
+func use_flower_box():
+	if is_by_well():
+		active_item.restore()
+		return
+
 	if not can_plant():
 		print_debug("Cannot plant, nice")
 		nejde_sound.play()
 		return
+
 	var flower = flower_scene.instance()
 	flower.position = position
+
 	var root = get_node("/root")
 	root.add_child(flower)
 	root.move_child(flower, 0)
+
+	active_item.use()
 	zasazeni_sound.play()
 	
 	
@@ -95,22 +100,26 @@ func apply_movement(delta: float):
 	position += input * speed * delta
 
 func can_plant():
-	# TODO: Prevent when overlapping weed
-	return not is_currently_overlapping_node_in_group("flower") and not is_currently_overlapping_node_in_group("weed")
+	return not Util.is_currently_overlapping_node_in_group(planting_area, "flower") and not Util.is_currently_overlapping_node_in_group(planting_area, "weed")
 
-func is_currently_overlapping_node_in_group(group_name: String):
-	# var overlapping_areas = planting_area.get_overlapping_areas()
-	# for area in overlapping_areas:
-	# 	if group_name in area.get_groups():
-	# 		return true
-	# return false
-	return get_first_overlapping_area_in_group(group_name) != null
+func is_by_well():
+	var overlaps_well = Util.is_currently_overlapping_node_in_group(self, "well")
+	print_debug("Overlaps well: %s" % overlaps_well)
+	return overlaps_well
 
-func get_first_overlapping_area_in_group(group_name: String):
-	var overlapping_areas = planting_area.get_overlapping_areas()
-	for area in overlapping_areas:
-		if group_name in area.get_groups():
-			return area
+# func is_currently_overlapping_node_in_group(group_name: String):
+# 	# var overlapping_areas = planting_area.get_overlapping_areas()
+# 	# for area in overlapping_areas:
+# 	# 	if group_name in area.get_groups():
+# 	# 		return true
+# 	# return false
+# 	return get_first_overlapping_area_in_group(group_name) != null
+
+# func get_first_overlapping_area_in_group(group_name: String):
+# 	var overlapping_areas = planting_area.get_overlapping_areas()
+# 	for area in overlapping_areas:
+# 		if group_name in area.get_groups():
+# 			return area
 			
-	return null
+# 	return null
 
