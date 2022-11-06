@@ -61,6 +61,7 @@ func _on_Weed_tree_exiting(spawn_position: int, weed: Weed):
 	used_positions.erase(spawn_position)
 	fully_grown_weed_count -= 1
 	# print_debug(get_used_positions())
+	print_debug("weeds grown: %s" % fully_grown_weed_count)
 	existing_weeds.erase(weed)
 	if spawn_timer.is_stopped():
 		spawn_timer.start()
