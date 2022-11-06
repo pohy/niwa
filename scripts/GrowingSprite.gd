@@ -5,7 +5,7 @@ extends Node2D
 signal growth_finished
 
 export(Array, Texture) var growth_textures
-export var growth_time_range: Vector2 = Vector2(1, 5)
+export var growth_time_range: Vector2 = Vector2(5, 7)
 
 onready var sprite := $Sprite as Sprite
 onready var growth_timer := $GrowthTimer as Timer

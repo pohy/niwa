@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/Scaling_Ref.png" type="Texture" id=12]
 [ext_resource path="res://scripts/Music.gd" type="Script" id=13]
+[ext_resource path="res://sounds/wav/music/lastHuba.mp3" type="AudioStream" id=14]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=16]
 [ext_resource path="res://assets/Fog_end/fog_end_7.png" type="Texture" id=17]
 [ext_resource path="res://assets/Fog_end/fog_end_6.png" type="Texture" id=18]
@@ -77,7 +78,7 @@ wait_time = 20.0
 autostart = true
 
 [node name="SpawnSpeedTimer" type="Timer" parent="WeedSpawner"]
-wait_time = 25.0
+wait_time = 19.0
 autostart = true
 
 [node name="Well" parent="." instance=ExtResource( 9 )]
@@ -119,7 +120,7 @@ volume_db = -6.0
 autoplay = true
 
 [node name="End_music" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource( 7 )
+stream = ExtResource( 14 )
 volume_db = -6.0
 
 [node name="Lanterns" type="Node2D" parent="."]
@@ -146,6 +147,10 @@ visible = false
 position = Vector2( 960, 540 )
 frames = SubResource( 3 )
 animation = "fade_out"
+
+[node name="ExitMusic" type="AudioStreamPlayer" parent="Game"]
+stream = ExtResource( 14 )
+volume_db = -6.0
 
 [connection signal="max_weeds_grown" from="WeedSpawner" to="Game" method="_on_WeedSpawner_max_weeds_grown"]
 [connection signal="timeout" from="WeedSpawner/SpawnTimer" to="WeedSpawner" method="_on_SpawnTimer_timeout"]

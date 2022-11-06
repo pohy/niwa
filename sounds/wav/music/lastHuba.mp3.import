@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/lastHuba.mp3-d19c59082fa16b9ffc205b41487c026d.mp3str"
+
+[deps]
+
+source_file="res://sounds/wav/music/lastHuba.mp3"
+dest_files=[ "res://.import/lastHuba.mp3-d19c59082fa16b9ffc205b41487c026d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
