@@ -107,10 +107,10 @@ func swap_weeds():
 func _on_DelayTimer_timeout():
 	spawn_timer.start()
 
+	# fully_grown_weed_count = max_weeds
 	# start_end_game()
 
 func start_end_game():
-	# fully_grown_weed_count = max_weeds
 
 	emit_signal("max_weeds_grown")
 	spawn_timer.stop()

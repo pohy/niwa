@@ -6,6 +6,9 @@ onready var weed_spawner := $"../WeedSpawner" as WeedSpawner
 onready var player := $"../Player" as Player
 onready var exit_music := $ExitMusic as AudioStreamPlayer
 
+var end_game_started = false
+var end_game_finished = false
+
 func _on_Fog_animation_finished():
 	print_debug("fog finished")
 	match fog.animation:
@@ -19,6 +22,9 @@ func _on_Fog_animation_finished():
 
 
 func _on_WeedSpawner_max_weeds_grown():
+	if end_game_started:
+		return
+	end_game_started = true
 	print_debug("all weeds grown GAME")
 	player.controllable = false
 	fog.visible = true
