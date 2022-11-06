@@ -4,8 +4,7 @@ export var music_stage = 1
 
 onready var loop1 := $Main_music as AudioStreamPlayer
 onready var loop2 := $End_music as AudioStreamPlayer
-onready var counter = 0
-onready var music_playing = true
+
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -18,14 +17,9 @@ func _ready():
 	# track_counter()
 
 func track_counter():
-	while music_playing:
 		if music_stage == 1:
 			loop1.play()			
-			counter += 1
-			if counter > 1:
-				loop1.stream_paused = true
-				music_stage = 2
-	
+				
 		if music_stage == 2:
 			loop2.play()
 	

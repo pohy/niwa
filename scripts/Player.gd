@@ -2,12 +2,14 @@ extends Area2D
 
 export var speed: float = 20
 export var min_plant_distance: float = 8
+export var side_barier_limit = 130
 
 var flower_scene: PackedScene = preload("res://scenes/flower.tscn")
 var active_item: PlayerItem = null
 # TODO: Can items overlap? Should we solve that when dropping items?
 var last_colliding_item: PlayerItem = null
 var last_input: Vector2 = Vector2.ZERO
+var screen_size
 
 onready var planting_area := $PlantingArea as Area2D
 onready var animated_sprite := $AnimatedSprite as AnimatedSprite
@@ -23,7 +25,7 @@ onready var zasazeni_sound := $Sounds/ZasazeniSound as AudioStreamPlayer2D
 
 
 func _ready():
-	pass
+	screen_size = get_viewport_rect().size
 
 func _process(delta: float):
 	apply_movement(delta)
@@ -121,6 +123,8 @@ func apply_movement(delta: float):
 		facing = get_facing(input)
 		anim = "walk"
 		last_input = input
+		
+	position.x = clamp(position.x, side_barier_limit, screen_size.x - side_barier_limit) 
 
 	# print_debug("last facing: %s, facing: %s" % [last_facing, facing])
 
