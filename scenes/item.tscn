@@ -9,11 +9,13 @@ extents = Vector2( 8, 8 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.0886374, 0.0886374 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
 
 [node name="ChargeLabel" type="RichTextLabel" parent="."]
+visible = false
 margin_left = -8.0
 margin_top = -28.0
 margin_right = 32.0

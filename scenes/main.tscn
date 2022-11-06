@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/placeholders/ground.png" type="Texture" id=3]
-[ext_resource path="res://assets/shovel.png" type="Texture" id=4]
-[ext_resource path="res://assets/flower-box.png" type="Texture" id=6]
+[ext_resource path="res://assets/Items/box.png" type="Texture" id=4]
+[ext_resource path="res://assets/Items/Shovel.png" type="Texture" id=5]
+[ext_resource path="res://assets/Fog_end/fog_end_5.png" type="Texture" id=6]
 [ext_resource path="res://sounds/wav/ambient.wav" type="AudioStream" id=7]
 [ext_resource path="res://scripts/WeedSpawner.gd" type="Script" id=8]
 [ext_resource path="res://scenes/well.tscn" type="PackedScene" id=9]
@@ -14,9 +15,31 @@
 [ext_resource path="res://scripts/Music.gd" type="Script" id=13]
 [ext_resource path="res://sounds/wav/music/loop2.wav" type="AudioStream" id=14]
 [ext_resource path="res://sounds/wav/music/loop1.wav" type="AudioStream" id=15]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=16]
+[ext_resource path="res://assets/Fog_end/fog_end_7.png" type="Texture" id=17]
+[ext_resource path="res://assets/Fog_end/fog_end_6.png" type="Texture" id=18]
+[ext_resource path="res://assets/Background/Fog_3.png" type="Texture" id=19]
+[ext_resource path="res://assets/Lantern_Well/lantern_1.png" type="Texture" id=20]
+[ext_resource path="res://assets/Fog_end/fog_end_1.png" type="Texture" id=21]
+[ext_resource path="res://assets/Fog_end/fog_end_2.png" type="Texture" id=22]
+[ext_resource path="res://assets/Fog_end/fog_end_3.png" type="Texture" id=23]
+[ext_resource path="res://assets/Fog_end/fog_end_4.png" type="Texture" id=24]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 64, 4 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 24 ), ExtResource( 6 ), ExtResource( 18 ), ExtResource( 17 ) ],
+"loop": false,
+"name": "fade_in",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": false,
+"name": "fade_out",
+"speed": 1.0
+} ]
 
 [node name="main" type="Node2D"]
 
@@ -44,8 +67,6 @@ position = Vector2( 320, 280 )
 script = ExtResource( 8 )
 ground_level = 640.0
 spawn_range = Vector2( -150, 1720 )
-spawn_rate_range = Vector2( 2, 5 )
-max_weeds = 7
 spawn_positions_jitter = 20.0
 
 [node name="SpawnTimer" type="Timer" parent="WeedSpawner"]
@@ -61,14 +82,14 @@ position = Vector2( 846, 907 )
 
 [node name="FlowerBox" parent="." instance=ExtResource( 1 )]
 position = Vector2( 667, 863 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 6 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
 type = 1
 
 [node name="Hoe" parent="." instance=ExtResource( 1 )]
 position = Vector2( 519, 860 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 4 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 5 )
 infinite_charges = true
 
 [node name="ScaleRef" type="Sprite" parent="."]
@@ -93,4 +114,31 @@ volume_db = -6.0
 stream = ExtResource( 14 )
 volume_db = -6.0
 
+[node name="Lanterns" type="Node2D" parent="."]
+
+[node name="Lantern" type="Sprite" parent="Lanterns"]
+position = Vector2( 74, 794 )
+scale = Vector2( 0.260543, 0.260543 )
+texture = ExtResource( 20 )
+
+[node name="Lantern2" type="Sprite" parent="Lanterns"]
+position = Vector2( 1838, 797 )
+scale = Vector2( 0.260543, 0.260543 )
+texture = ExtResource( 20 )
+
+[node name="FogPerma" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+texture = ExtResource( 19 )
+
+[node name="Game" type="Node2D" parent="."]
+script = ExtResource( 16 )
+
+[node name="Fog" type="AnimatedSprite" parent="Game"]
+visible = false
+position = Vector2( 960, 540 )
+frames = SubResource( 3 )
+animation = "fade_out"
+
+[connection signal="max_weeds_grown" from="WeedSpawner" to="Game" method="_on_WeedSpawner_max_weeds_grown"]
 [connection signal="timeout" from="WeedSpawner/SpawnTimer" to="WeedSpawner" method="_on_SpawnTimer_timeout"]
+[connection signal="animation_finished" from="Game/Fog" to="Game" method="_on_Fog_animation_finished"]

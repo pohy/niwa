@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/end_2.png-1b4bc8a80d20635b852d0fa66683d984.stex"
+path="res://.import/Transparent.png-fc23964bec00dc6b98d49e8a59b88816.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Flower_End/end_2.png"
-dest_files=[ "res://.import/end_2.png-1b4bc8a80d20635b852d0fa66683d984.stex" ]
+source_file="res://assets/Background/Transparent.png"
+dest_files=[ "res://.import/Transparent.png-fc23964bec00dc6b98d49e8a59b88816.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/end_3.png-f7d6e07fc9dc36758476cef7e634604e.stex"
+path="res://.import/lantern_1.png-10d0d35895a192b5f5a5b9e8064afe67.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Flower_End/end_3.png"
-dest_files=[ "res://.import/end_3.png-f7d6e07fc9dc36758476cef7e634604e.stex" ]
+source_file="res://assets/Items/lantern_1.png"
+dest_files=[ "res://.import/lantern_1.png-10d0d35895a192b5f5a5b9e8064afe67.stex" ]
 
 [params]
 

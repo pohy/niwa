@@ -1,3 +1,4 @@
+class_name Player
 extends Area2D
 
 export var speed: float = 20
@@ -8,6 +9,7 @@ var active_item: PlayerItem = null
 # TODO: Can items overlap? Should we solve that when dropping items?
 var last_colliding_item: PlayerItem = null
 var last_input: Vector2 = Vector2.ZERO
+var controllable: bool = true
 
 onready var planting_area := $PlantingArea as Area2D
 onready var animated_sprite := $AnimatedSprite as AnimatedSprite
@@ -21,11 +23,13 @@ onready var pickup_sound := $Sounds/PickupSound as AudioStreamPlayer2D
 onready var nejde_sound := $Sounds/ToNejdeSound as AudioStreamPlayer2D
 onready var zasazeni_sound := $Sounds/ZasazeniSound as AudioStreamPlayer2D
 
-
 func _ready():
 	pass
 
 func _process(delta: float):
+	if not controllable:
+		return
+
 	apply_movement(delta)
 
 	if Input.is_action_just_pressed("secondary"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Weed/weed_1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/growing-sprite.tscn" type="PackedScene" id=2]
@@ -6,6 +6,15 @@
 [ext_resource path="res://assets/Weed/weed_3.png" type="Texture" id=4]
 [ext_resource path="res://assets/Scaling_Ref.png" type="Texture" id=5]
 [ext_resource path="res://scripts/WeedFlower.gd" type="Script" id=6]
+[ext_resource path="res://assets/Flower_End/end_1_1.png" type="Texture" id=7]
+[ext_resource path="res://assets/Flower_End/end_1_2.png" type="Texture" id=8]
+[ext_resource path="res://assets/Flower_End/end_1_3.png" type="Texture" id=9]
+[ext_resource path="res://assets/Flower_End/end_2_1.png" type="Texture" id=10]
+[ext_resource path="res://assets/Flower_End/end_2_2.png" type="Texture" id=11]
+[ext_resource path="res://assets/Flower_End/end_2_3.png" type="Texture" id=12]
+[ext_resource path="res://assets/Flower_End/end_3_1.png" type="Texture" id=13]
+[ext_resource path="res://assets/Flower_End/end_3_2.png" type="Texture" id=14]
+[ext_resource path="res://assets/Flower_End/end_3_3.png" type="Texture" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 128, 128 )
@@ -26,6 +35,29 @@ shape = SubResource( 1 )
 position = Vector2( 0, -110 )
 scale = Vector2( 0.3, 0.3 )
 growth_textures = [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ) ]
-growth_time_range = Vector2( 2, 5 )
+growth_time_range = Vector2( 1, 2 )
+
+[node name="Flowers" type="Node2D" parent="."]
+
+[node name="Flower1" parent="Flowers" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 0, -110 )
+scale = Vector2( 0.3, 0.3 )
+growth_textures = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
+growth_time_range = Vector2( 4, 10 )
+
+[node name="Flower2" parent="Flowers" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 0, -110 )
+scale = Vector2( 0.3, 0.3 )
+growth_textures = [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ]
+growth_time_range = Vector2( 5, 16 )
+
+[node name="Flower3" parent="Flowers" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 0, -110 )
+scale = Vector2( 0.3, 0.3 )
+growth_textures = [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ]
+growth_time_range = Vector2( 7, 18 )
 
 [connection signal="growth_finished" from="GrowingSprite" to="." method="_on_GrowingSprite_growth_finished"]

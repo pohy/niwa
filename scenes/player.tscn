@@ -90,7 +90,7 @@ position = Vector2( 12, -74 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
 animation = "idle_right"
-frame = 6
+frame = 0
 speed_scale = 0.6
 playing = true
 

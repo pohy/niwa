@@ -1,10 +1,24 @@
 extends Node
 
+# TODO: Disable player and move them somewhere in the air
+onready var fog := $Fog as AnimatedSprite
+onready var weed_spawner := $"../WeedSpawner" as WeedSpawner
+onready var player := $"../Player" as Player
+
+func _on_Fog_animation_finished():
+	print_debug("fog finished")
+	match fog.animation:
+		"fade_out":
+			weed_spawner.swap_weeds()
+			fog.play("fade_in")
+		"fade_in":
+			fog.visible = false
+			player.controllable = true
+	pass # Replace with function body.
 
 
-# TODO: Track whether max_plevels have been grown
-#
-
-
-func _ready():
-	pass
+func _on_WeedSpawner_max_weeds_grown():
+	print_debug("all weeds grown GAME")
+	player.controllable = false
+	fog.visible = true
+	fog.play("fade_out")
