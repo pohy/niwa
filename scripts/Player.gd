@@ -83,7 +83,7 @@ func swap_items():
 	active_item = last_colliding_item
 	last_colliding_item = null
 	pickup_sound.play()
-	
+
 
 func apply_movement(delta: float):
 	var input = Vector2.ZERO
