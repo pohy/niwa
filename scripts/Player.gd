@@ -48,7 +48,7 @@ func _on_Player_area_entered(area):
 		print_debug("Item type: %s" % item.type)
 
 func _on_Player_area_exited(area):
-	if area is PlayerItem:
+	if area is PlayerItem and area == last_colliding_item:
 		print_debug("item left")
 		last_colliding_item = null
 
