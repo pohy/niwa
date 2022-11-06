@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/flower.png" type="Texture" id=1]
+[ext_resource path="res://assets/placeholders/flower.png" type="Texture" id=1]
 [ext_resource path="res://scripts/GrowingSprite.gd" type="Script" id=2]
 
 [node name="GrowingSprite" type="Node2D"]

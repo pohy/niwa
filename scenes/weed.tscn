@@ -1,25 +1,31 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/weed-3.png" type="Texture" id=1]
+[ext_resource path="res://assets/Weed/weed_1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/growing-sprite.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/weed-0.png" type="Texture" id=3]
-[ext_resource path="res://assets/weed-1.png" type="Texture" id=4]
-[ext_resource path="res://assets/weed-2.png" type="Texture" id=5]
+[ext_resource path="res://assets/Weed/weed_2.png" type="Texture" id=3]
+[ext_resource path="res://assets/Weed/weed_3.png" type="Texture" id=4]
+[ext_resource path="res://assets/Scaling_Ref.png" type="Texture" id=5]
 [ext_resource path="res://scripts/WeedFlower.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
+extents = Vector2( 128, 128 )
 
 [node name="Weed" type="Area2D" groups=["weed"]]
-scale = Vector2( 4, 4 )
 script = ExtResource( 6 )
 
+[node name="ScaleRef" type="Sprite" parent="."]
+visible = false
+position = Vector2( -542, -368 )
+texture = ExtResource( 5 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -8 )
+position = Vector2( 0, -128 )
 shape = SubResource( 1 )
 
 [node name="GrowingSprite" parent="." instance=ExtResource( 2 )]
-growth_textures = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 1 ) ]
+position = Vector2( 0, -110 )
+scale = Vector2( 0.3, 0.3 )
+growth_textures = [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ) ]
 growth_time_range = Vector2( 2, 5 )
 
 [connection signal="growth_finished" from="GrowingSprite" to="." method="_on_GrowingSprite_growth_finished"]

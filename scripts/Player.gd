@@ -7,8 +7,10 @@ var flower_scene: PackedScene = preload("res://scenes/flower.tscn")
 var active_item: PlayerItem = null
 # TODO: Can items overlap? Should we solve that when dropping items?
 var last_colliding_item: PlayerItem = null
+var last_input: Vector2 = Vector2.ZERO
 
 onready var planting_area := $PlantingArea as Area2D
+onready var animated_sprite := $AnimatedSprite as AnimatedSprite
 
 #sounds
 onready var walking_sounds := $Sounds/WalkingSounds as OneShotPlayer
@@ -70,9 +72,11 @@ func use_flower_box():
 	var flower = flower_scene.instance()
 	flower.position = position
 
-	var root = get_node("/root")
+	var root = get_node("/root/main")
 	root.add_child(flower)
-	root.move_child(flower, 0)
+	# TODO: Keep in front of the background
+	var bg_index = root.get_node("Background").get_index()
+	root.move_child(flower, bg_index)
 
 	active_item.use()
 	zasazeni_sound.play()
@@ -86,6 +90,9 @@ func swap_items():
 	
 
 func apply_movement(delta: float):
+	var last_facing = get_facing(last_input)
+	var anim = "idle"
+
 	var input = Vector2.ZERO
 	if Input.is_action_pressed("left"):
 		input.x = -speed
@@ -95,9 +102,26 @@ func apply_movement(delta: float):
 
 	if input.length() > 0 and not walking_sounds.playing:
 		walking_sounds.play()
-		
+
+	var facing = last_facing
+	if input.length() > 0:
+		facing = get_facing(input)
+		anim = "walk"
+		last_input = input
+
+	# print_debug("last facing: %s, facing: %s" % [last_facing, facing])
+
+	var current_anim = "%s_%s" % [anim, facing]
+	# print_debug("current anim: %s" % current_anim)
+	animated_sprite.animation = current_anim
 		
 	position += input * speed * delta
+
+func get_facing(v: Vector2) -> String:
+	if v.x < 0:
+		return "left"
+	else:
+		return "right"
 
 func can_plant():
 	return not Util.is_currently_overlapping_node_in_group(planting_area, "flower") and not Util.is_currently_overlapping_node_in_group(planting_area, "weed")
@@ -106,20 +130,3 @@ func is_by_well():
 	var overlaps_well = Util.is_currently_overlapping_node_in_group(self, "well")
 	print_debug("Overlaps well: %s" % overlaps_well)
 	return overlaps_well
-
-# func is_currently_overlapping_node_in_group(group_name: String):
-# 	# var overlapping_areas = planting_area.get_overlapping_areas()
-# 	# for area in overlapping_areas:
-# 	# 	if group_name in area.get_groups():
-# 	# 		return true
-# 	# return false
-# 	return get_first_overlapping_area_in_group(group_name) != null
-
-# func get_first_overlapping_area_in_group(group_name: String):
-# 	var overlapping_areas = planting_area.get_overlapping_areas()
-# 	for area in overlapping_areas:
-# 		if group_name in area.get_groups():
-# 			return area
-			
-# 	return null
-

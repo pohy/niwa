@@ -19,8 +19,8 @@ func _ready():
 	pass
 
 func _on_SpawnTimer_timeout():
-	if used_positions.size() >= max_weeds:
-		print_debug("TODO: All weed spawn positions exhausted")
+	if get_used_positions().size() >= max_weeds:
+		# print_debug("TODO: All weed spawn positions exhausted")
 		spawn_timer.stop()
 		return
 
@@ -30,12 +30,13 @@ func _on_SpawnTimer_timeout():
 	var next_spawn_position = get_next_spawn_position()
 
 	if next_spawn_position >= 0:
-		print_debug("Spawning weed at position: %s" % next_spawn_position)
+		# print_debug("Spawning weed at position: %s" % next_spawn_position)
 		# print_debug("used positions: %s" % String(used_positions))
-		var distance_between_spawn_positions = (spawn_range.y / max_weeds)
+		var distance_between_spawn_positions = ((abs(spawn_range.x) + abs(spawn_range.y)) / max_weeds)
 		var weed = weed_scene.instance()
 		weed.position = Vector2(
 			# distance_between_spawn_positions / 2 +
+				spawn_range.x +
 				next_spawn_position * distance_between_spawn_positions +
 				rand_range(-spawn_positions_jitter, spawn_positions_jitter),
 			ground_level
@@ -49,25 +50,35 @@ func _on_SpawnTimer_timeout():
 	spawn_timer.start(rand_range(spawn_rate_range.x, spawn_rate_range.y))
 
 func _on_Weed_tree_exiting(spawn_position: int):
-	print_debug("Freeing spawn pos: %s" % spawn_position)
+	# print_debug("Freeing spawn pos: %s" % spawn_position)
 	used_positions.erase(spawn_position)
-	print_debug(used_positions)
+	# print_debug(get_used_positions())
 	if spawn_timer.is_stopped():
 		spawn_timer.start()
 
 func get_next_spawn_position(current_min_position: int = 0) -> int:
-	if used_positions.size() >= max_weeds:
+	var already_used_positions = get_used_positions()
+	# print_debug("size: %s, used: %s" % [already_used_positions.size(), already_used_positions])
+	if already_used_positions.size() >= max_weeds:
 		return -1
 
 	var next_position = int(rand_range(current_min_position, max_weeds))
 
-	if next_position in used_positions:
+	if next_position in already_used_positions:
 		for i in range(0, max_weeds - 1):
-			if not used_positions.has(i):
-				print_debug("Returning i: %s" % i)
+			if not already_used_positions.has(i):
+				# print_debug("Returning i: %s" % i)
 				used_positions.append(i)
 				return i
 		return -1
 
 	used_positions.append(next_position)
 	return next_position
+
+func get_used_positions():
+	var is_odd = max_weeds % 2 != 0
+	var mid_position = [int(floor(max_weeds / 2.0))] if is_odd else [max_weeds / 2, max_weeds / 2 + 1]
+	var new_used_positions = [] + used_positions
+	new_used_positions.append_array(mid_position)
+	# print_debug(new_used_positions)
+	return new_used_positions

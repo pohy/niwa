@@ -1,3 +1,4 @@
+tool
 class_name GrowingSprite
 extends Node2D
 

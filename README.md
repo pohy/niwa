@@ -26,6 +26,8 @@
   - When the plevel overwhelms the garden it transforms into a colored garden
 - Zooming out camera
   - Based on progression
+- Player
+  - Animation
 - Items
   - Let the player drop an item anywhere
   - Flower sazeničky bedýnka
@@ -44,6 +46,7 @@
   - Has to be watered
   - After watering, it grows
   - Track how many watering charges have been dispatched to the flower
+  - On spawn, pick from a set of growth stages at random
   - [x] Also has a wilted stage
     - [x] Despawn -> fade out and destroy
     - [x] Activates when the plevel reaches its final growth stage
@@ -54,6 +57,10 @@
     - ~~After a timeout aka. _holding_ the motyka activated~~
   - [x] Has three stages
   - [x] When it grows to the final stage it wilts the overlapping flowers
+  - [ ] 🐛 Destroying plevel skips the first growth stage
+  - [ ] 🐛 Plevel doesn't wilt the plant
+- [ ] Lantern boundaries
+  - [ ] Do not let the player go outside the screen/camera boundary
 - ?Meditation
   - Calls zalévací cloud
 - [x] Audio

@@ -11,13 +11,16 @@ func _ready():
 	growing_sprite.start_next_stage_growth()
 
 func hit():
+	var next_growth_stage = growing_sprite.current_growth_stage - 1
 	growing_sprite.update_growth_stage(-1)
-	if (growing_sprite.current_growth_stage <= 0):
+	if (next_growth_stage < 0):
 		print_debug("Destroy weedling")
 		# weed_spawner.free_spawn_position(spawn_position)
 		queue_free()
 
 
 func _on_GrowingSprite_growth_finished():
-	# TODO: ?Wilt overlapping flowers
-	pass # Replace with function body.
+	for area in get_overlapping_areas():
+		if "flower" in area.get_groups():
+			var flower: Flower = area
+			flower.wilt()
