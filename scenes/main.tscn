@@ -87,4 +87,8 @@ modulate = Color( 1, 1, 1, 0.545098 )
 position = Vector2( 960, 540 )
 texture = ExtResource( 12 )
 
+[node name="Music_Loop_1" type="AudioStreamPlayer" parent="."]
+volume_db = -6.118
+autoplay = true
+
 [connection signal="timeout" from="WeedSpawner/SpawnTimer" to="WeedSpawner" method="_on_SpawnTimer_timeout"]
