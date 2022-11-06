@@ -73,7 +73,6 @@ max_charges = 4
 
 [node name="Music" type="Node" parent="."]
 script = ExtResource( 11 )
-music_stage = null
 
 [node name="Ambient_Sound" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 7 )
