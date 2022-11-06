@@ -35,7 +35,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, -110 )
 scale = Vector2( 0.3, 0.3 )
 growth_textures = [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ) ]
-growth_time_range = Vector2( 4, 8 )
+growth_time_range = Vector2( 6, 8 )
 
 [node name="Flowers" type="Node2D" parent="."]
 

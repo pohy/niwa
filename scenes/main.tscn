@@ -79,7 +79,7 @@ one_shot = true
 autostart = true
 
 [node name="SpawnSpeedTimer" type="Timer" parent="WeedSpawner"]
-wait_time = 19.0
+wait_time = 17.0
 autostart = true
 
 [node name="Well" parent="." instance=ExtResource( 9 )]
