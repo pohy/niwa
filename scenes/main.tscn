@@ -4,7 +4,6 @@
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/placeholders/ground.png" type="Texture" id=3]
 [ext_resource path="res://assets/shovel.png" type="Texture" id=4]
-[ext_resource path="res://assets/watering-can.png" type="Texture" id=5]
 [ext_resource path="res://assets/flower-box.png" type="Texture" id=6]
 [ext_resource path="res://sounds/wav/ambient.wav" type="AudioStream" id=7]
 [ext_resource path="res://scripts/WeedSpawner.gd" type="Script" id=8]
@@ -71,13 +70,6 @@ position = Vector2( 519, 860 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 4 )
 infinite_charges = true
-
-[node name="WateringCan" parent="." instance=ExtResource( 1 )]
-visible = false
-position = Vector2( 366, 861 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 5 )
-type = 2
 
 [node name="ScaleRef" type="Sprite" parent="."]
 visible = false
