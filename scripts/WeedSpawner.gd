@@ -61,6 +61,7 @@ func _on_Weed_tree_exiting(spawn_position: int, weed: Weed):
 	used_positions.erase(spawn_position)
 	fully_grown_weed_count -= 1
 	# print_debug(get_used_positions())
+	print_debug("weeds grown: %s" % fully_grown_weed_count)
 	existing_weeds.erase(weed)
 	if spawn_timer.is_stopped():
 		spawn_timer.start()
@@ -70,7 +71,7 @@ func _on_Weed_grown():
 	print_debug("weeds grown: %s" % fully_grown_weed_count)
 	# TODO: -1 is a hack, let's not change the weed count from 7, or rather, to an even number :)
 	if fully_grown_weed_count >= max_weeds - 1:
-		emit_signal("max_weeds_grown")
+		start_end_game()
 
 func get_next_spawn_position(current_min_position: int = 0) -> int:
 	var already_used_positions = get_used_positions()
@@ -105,6 +106,14 @@ func swap_weeds():
 
 func _on_DelayTimer_timeout():
 	spawn_timer.start()
+
+	# start_end_game()
+
+func start_end_game():
+	# fully_grown_weed_count = max_weeds
+
+	emit_signal("max_weeds_grown")
+	spawn_timer.stop()
 
 
 var spawn_counter = 0

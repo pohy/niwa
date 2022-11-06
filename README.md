@@ -15,6 +15,10 @@
 - How many flowers can the player spawn?
 
 ## TODO
+- End game gets triggerd when not all plevel has grown or is even growing
+- Fade out/in keeps looping?!
+- Only a single type of flower is being spawned
+
 - Z key is not accessible for QWERTZ
 - Game progression
   - Initial, only sazeničky
