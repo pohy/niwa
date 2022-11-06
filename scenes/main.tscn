@@ -12,6 +12,9 @@
 [ext_resource path="res://scripts/Util.gd" type="Script" id=10]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/Scaling_Ref.png" type="Texture" id=12]
+[ext_resource path="res://scripts/Music.gd" type="Script" id=13]
+[ext_resource path="res://sounds/wav/music/loop2.wav" type="AudioStream" id=14]
+[ext_resource path="res://sounds/wav/music/loop1.wav" type="AudioStream" id=15]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 64, 4 )
@@ -87,8 +90,20 @@ modulate = Color( 1, 1, 1, 0.545098 )
 position = Vector2( 960, 540 )
 texture = ExtResource( 12 )
 
-[node name="Music_Loop_1" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="Node" parent="."]
+script = ExtResource( 13 )
+
+[node name="Ambient_Sound" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 7 )
 volume_db = -6.118
 autoplay = true
+
+[node name="Music_Loop_1" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 15 )
+volume_db = -6.0
+
+[node name="Music_Loop_2" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 14 )
+volume_db = -6.0
 
 [connection signal="timeout" from="WeedSpawner/SpawnTimer" to="WeedSpawner" method="_on_SpawnTimer_timeout"]
