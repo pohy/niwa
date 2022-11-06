@@ -74,6 +74,7 @@ one_shot = true
 
 [node name="DelayTimer" type="Timer" parent="WeedSpawner"]
 wait_time = 20.0
+one_shot = true
 autostart = true
 
 [node name="SpawnSpeedTimer" type="Timer" parent="WeedSpawner"]
