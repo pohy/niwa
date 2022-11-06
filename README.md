@@ -1,6 +1,7 @@
 # Niwa
 
 ## Questions
+- Recharging flower box at the well feels kinda weird
 - How do we communicate that flower has been watered?
   - Wet ground below flower that dries up?
 
@@ -14,6 +15,7 @@
 - How many flowers can the player spawn?
 
 ## TODO
+- Z key is not accessible for QWERTZ
 - Game progression
   - Initial, only sazeničky
   - Konev comes into action
@@ -27,11 +29,11 @@
 - Items
   - Let the player drop an item anywhere
   - Flower sazeničky bedýnka
-    - Holds up to 4 sazaničky
+    - [x] Holds up to 4 sazaničky
     - Spawns one of _n_ plants at a time
   - Konev
-    - Has to be refilled at the well
-    - Has only _n_ charges
+    - [x] Has to be refilled at the well
+    - [x] Has only _n_ charges
     - Enables the player to water the plants
   - Motyka
     - [x] Removes plevel after a ~~duration~~ `growth_stages.size()` hits
