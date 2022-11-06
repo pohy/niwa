@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -20,11 +20,6 @@
 extents = Vector2( 64, 4 )
 
 [node name="main" type="Node2D"]
-
-[node name="Ambient_Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
-volume_db = -6.118
-autoplay = true
 
 [node name="Ground" type="Area2D" parent="."]
 position = Vector2( 960, 960 )

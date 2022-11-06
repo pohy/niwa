@@ -14,7 +14,8 @@ onready var music_playing = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	track_counter()
+	pass
+	# track_counter()
 
 func track_counter():
 	while music_playing:
