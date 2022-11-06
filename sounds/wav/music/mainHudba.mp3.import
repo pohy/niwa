@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mainHudba.mp3-a43bd0491fa49e1e60dae6ff02cb34d1.mp3str"
+
+[deps]
+
+source_file="res://sounds/wav/music/mainHudba.mp3"
+dest_files=[ "res://.import/mainHudba.mp3-a43bd0491fa49e1e60dae6ff02cb34d1.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

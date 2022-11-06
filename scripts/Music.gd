@@ -2,8 +2,8 @@ extends Node
 
 export var music_stage = 1
 
-onready var loop1 := $Music_Loop_1 as AudioStreamPlayer
-onready var loop2 := $Music_Loop_2 as AudioStreamPlayer
+onready var loop1 := $Main_music as AudioStreamPlayer
+onready var loop2 := $End_music as AudioStreamPlayer
 onready var counter = 0
 onready var music_playing = true
 
