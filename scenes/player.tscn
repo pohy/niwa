@@ -90,7 +90,7 @@ position = Vector2( 12, -74 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
 animation = "idle_right"
-frame = 6
+frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -123,6 +123,12 @@ stream = ExtResource( 14 )
 [node name="ZasazeniSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 15 )
 volume_db = -1.841
+
+[node name="ItemMountPoint" type="Node2D" parent="."]
+position = Vector2( 0, -196 )
+
+[node name="ItemDropPoint" type="Node2D" parent="."]
+position = Vector2( 0, -22 )
 
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Player_area_exited"]

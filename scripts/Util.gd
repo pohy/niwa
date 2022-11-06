@@ -21,4 +21,10 @@ static func get_first_overlapping_area_in_group(area: Area2D, group_name: String
 			
 	return null
 
-
+# static func get_overlapping_areas_in_group(area: Area2D, group_name: String):
+# 	var areas_with_tag = []
+# 	var overlapping_areas = area.get_overlapping_areas()
+# 	for overlapping_area in overlapping_areas:
+# 		if group_name in overlapping_area.get_groups():
+# 			areas_with_tag.append(overlapping_area)
+# 	return areas_with_tag

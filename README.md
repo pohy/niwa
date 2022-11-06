@@ -29,7 +29,8 @@
 - Player
   - Animation
 - Items
-  - Let the player drop an item anywhere
+  - [ ] 🐛 Dropping/swapping items messes with the collision shape of flower box. WTF?!
+  - [x] Let the player drop an item anywhere
   - Flower sazeničky bedýnka
     - [x] Holds up to 4 sazaničky
     - Spawns one of _n_ plants at a time
@@ -57,8 +58,9 @@
     - ~~After a timeout aka. _holding_ the motyka activated~~
   - [x] Has three stages
   - [x] When it grows to the final stage it wilts the overlapping flowers
-  - [ ] 🐛 Destroying plevel skips the first growth stage
-  - [ ] 🐛 Plevel doesn't wilt the plant
+  - [x] 🐛 Destroying plevel skips the first growth stage
+  - [x] 🐛 Plevel doesn't wilt the plant
+  - [ ] 🐛 Plevel seems to wilt too many plants, not just those that it overlaps
 - [ ] Lantern boundaries
   - [ ] Do not let the player go outside the screen/camera boundary
 - ?Meditation

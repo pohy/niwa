@@ -11,6 +11,8 @@ var last_input: Vector2 = Vector2.ZERO
 
 onready var planting_area := $PlantingArea as Area2D
 onready var animated_sprite := $AnimatedSprite as AnimatedSprite
+onready var item_mount_point := $ItemMountPoint as Node2D
+onready var item_drop_point := $ItemDropPoint as Node2D
 
 #sounds
 onready var walking_sounds := $Sounds/WalkingSounds as OneShotPlayer
@@ -26,11 +28,15 @@ func _ready():
 func _process(delta: float):
 	apply_movement(delta)
 
-	if last_colliding_item is PlayerItem and Input.is_action_just_pressed("secondary"):
-		swap_items()
+	if Input.is_action_just_pressed("secondary"):
+		print_debug(last_colliding_item)
+		if last_colliding_item is PlayerItem:
+			swap_items()
+		else:
+			drop_item()
 
 	if active_item != null:
-		active_item.position = position
+		active_item.position = item_mount_point.global_position
 
 	if active_item != null and Input.is_action_just_pressed("primary"):
 		use_active_item()
@@ -38,11 +44,12 @@ func _process(delta: float):
 func _on_Player_area_entered(area):
 	if area is PlayerItem:
 		last_colliding_item = area
-		# var item = area as PlayerItem
-		# print_debug("Item type: %s" % item.type)
+		var item = area as PlayerItem
+		print_debug("Item type: %s" % item.type)
 
 func _on_Player_area_exited(area):
 	if area is PlayerItem:
+		print_debug("item left")
 		last_colliding_item = null
 
 func use_active_item():
@@ -84,10 +91,16 @@ func use_flower_box():
 	
 func swap_items():
 	# TODO: Unparent currently active item
+	drop_item()
 	active_item = last_colliding_item
 	last_colliding_item = null
 	pickup_sound.play()
 	
+func drop_item():
+	if active_item == null:
+		return
+	active_item.position = item_drop_point.global_position
+	active_item = null
 
 func apply_movement(delta: float):
 	var last_facing = get_facing(last_input)
