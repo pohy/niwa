@@ -43,6 +43,7 @@ samples = [ ExtResource( 4 ), ExtResource( 7 ), ExtResource( 6 ) ]
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 8 )
+volume_db = -1.84
 
 [node name="MotykaSounds" parent="Sounds" instance=ExtResource( 5 )]
 samples = [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
@@ -52,6 +53,7 @@ stream = ExtResource( 14 )
 
 [node name="ZasazeniSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 15 )
+volume_db = -1.841
 
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Player_area_exited"]
