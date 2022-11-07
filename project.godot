@@ -64,7 +64,6 @@ _global_script_class_icons={
 
 config/name="niwa"
 run/main_scene="res://scenes/main.tscn"
-boot_splash/show_image=false
 config/icon="res://assets/placeholders/icon.png"
 
 [display]
