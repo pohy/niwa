@@ -16,8 +16,8 @@
 
 ## TODO
 - End game gets triggerd when not all plevel has grown or is even growing
-  - Seems kinda fixed?
-- Trigger final hudba in end game
+  - Seems kinda fixed? Nope :D
+- Trigger final hudba in the end game
 - [x] Fade out/in keeps looping?!
 - [x] Only a single type of flower is being spawned
 

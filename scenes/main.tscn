@@ -43,6 +43,9 @@ animations = [ {
 
 [node name="main" type="Node2D"]
 
+[node name="Util" type="Node" parent="."]
+script = ExtResource( 10 )
+
 [node name="Ground" type="Area2D" parent="."]
 position = Vector2( 960, 960 )
 scale = Vector2( 16, 10 )
@@ -59,8 +62,7 @@ shape = SubResource( 2 )
 [node name="Background" parent="." instance=ExtResource( 11 )]
 position = Vector2( 960, 1080 )
 
-[node name="Util" type="Node" parent="."]
-script = ExtResource( 10 )
+[node name="Flowers" type="Node2D" parent="."]
 
 [node name="WeedSpawner" type="Node2D" parent="."]
 position = Vector2( 320, 280 )
@@ -89,17 +91,17 @@ scale = Vector2( 0.162577, 0.162577 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 846, 907 )
 
-[node name="FlowerBox" parent="." instance=ExtResource( 1 )]
-position = Vector2( 667, 863 )
-scale = Vector2( 5, 5 )
-texture = ExtResource( 4 )
-type = 1
-
 [node name="Hoe" parent="." instance=ExtResource( 1 )]
-position = Vector2( 519, 860 )
+position = Vector2( 519, 885 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 5 )
 infinite_charges = true
+
+[node name="FlowerBox" parent="." instance=ExtResource( 1 )]
+position = Vector2( 667, 885 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+type = 1
 
 [node name="ScaleRef" type="Sprite" parent="."]
 visible = false

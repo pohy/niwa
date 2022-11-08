@@ -14,7 +14,6 @@ var weed_scene: PackedScene = preload("res://scenes/weed.tscn")
 
 var existing_weeds = []
 var used_positions = []
-var fully_grown_weed_count = 0
 var max_weeds = 7
 
 func _ready():
@@ -22,13 +21,9 @@ func _ready():
 
 func _on_SpawnTimer_timeout():
 	if get_used_positions().size() >= max_weeds:
-		# print_debug("TODO: All weed spawn positions exhausted")
 		spawn_timer.stop()
 		return
 
-	# var flowers = get_tree().get_nodes_in_group("flower")
-	# TODO: Track whether the flower has weed already growing for it?
-	# print_debug(flowers)
 	var next_spawn_position = get_next_spawn_position()
 
 	if next_spawn_position >= 0:
@@ -48,7 +43,7 @@ func _on_SpawnTimer_timeout():
 			ground_level
 		)
 		weed.spawn_position = next_spawn_position
-		weed.connect("tree_exiting", self, "_on_Weed_tree_exiting", [next_spawn_position, weed])
+		weed.connect("died", self, "_on_Weed_died", [next_spawn_position, weed])
 		weed.connect("grown", self, "_on_Weed_grown")
 		# weed.weed_spawner = self
 		add_child(weed)
@@ -56,21 +51,21 @@ func _on_SpawnTimer_timeout():
 
 	spawn_timer.start(rand_range(spawn_rate_range.x, spawn_rate_range.y))
 
-func _on_Weed_tree_exiting(spawn_position: int, weed: Weed):
+func _on_Weed_died(spawn_position: int, weed: Weed):
 	# print_debug("Freeing spawn pos: %s" % spawn_position)
 	used_positions.erase(spawn_position)
-	fully_grown_weed_count -= 1
-	# print_debug(get_used_positions())
-	print_debug("weeds grown: %s" % fully_grown_weed_count)
 	existing_weeds.erase(weed)
 	if spawn_timer.is_stopped():
 		spawn_timer.start()
 
 func _on_Weed_grown():
-	fully_grown_weed_count += 1
-	print_debug("weeds grown: %s" % fully_grown_weed_count)
-	# TODO: -1 is a hack, let's not change the weed count from 7, or rather, to an even number :)
-	if fully_grown_weed_count >= max_weeds - 1:
+	var fully_grown_count = 0
+	for child in get_children():
+		if child is Weed and child.growing_sprite.is_grown():
+			fully_grown_count += 1
+	# TODO: -1 is a hack [hot fix], let's not change the weed count from 7, or rather, to an even number :)
+	print_debug("fully grown count: %s" % fully_grown_count)
+	if fully_grown_count >= max_weeds - 1:
 		start_end_game()
 
 func get_next_spawn_position(current_min_position: int = 0) -> int:
@@ -111,7 +106,6 @@ func _on_DelayTimer_timeout():
 	# start_end_game()
 
 func start_end_game():
-
 	emit_signal("max_weeds_grown")
 	spawn_timer.stop()
 

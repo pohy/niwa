@@ -246,7 +246,7 @@ position = Vector2( 0, -196 )
 position = Vector2( 0, -22 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 1.5
+playback_speed = 1.75
 anims/RESET = SubResource( 3 )
 anims/use_hoe = SubResource( 4 )
 

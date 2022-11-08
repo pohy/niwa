@@ -14,7 +14,6 @@ export var infinite_charges: bool = false
 export var max_charges: int = 4
 
 onready var sprite := $Sprite as Sprite
-# TODO: Hide charge label
 onready var charge_label := $ChargeLabel as RichTextLabel
 
 onready var current_charges: int = max_charges

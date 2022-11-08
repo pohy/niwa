@@ -8,7 +8,7 @@ export var side_barier_limit = 130
 var flower_scene: PackedScene = preload("res://scenes/flower.tscn")
 var active_item: PlayerItem = null
 var active_item_parent: Node = null
-# TODO: Can items overlap? Should we solve that when dropping items?
+var active_item_index: int = -1
 var last_colliding_item: PlayerItem = null
 var last_input: Vector2 = Vector2.ZERO
 var screen_size
@@ -38,7 +38,7 @@ func _process(delta: float):
 	apply_movement(delta)
 
 	if Input.is_action_just_pressed("secondary"):
-		print_debug(last_colliding_item)
+		# print_debug(last_colliding_item)
 		if last_colliding_item is PlayerItem:
 			swap_items()
 		else:
@@ -54,12 +54,12 @@ func _process(delta: float):
 func _on_Player_area_entered(area):
 	if area is PlayerItem:
 		last_colliding_item = area
-		var item = area as PlayerItem
-		print_debug("Item type: %s" % item.type)
+		# var item = area as PlayerItem
+		# print_debug("Item type: %s" % item.type)
 
 func _on_Player_area_exited(area):
 	if area is PlayerItem and area == last_colliding_item:
-		print_debug("item left")
+		# print_debug("item left")
 		last_colliding_item = null
 
 func _on_AnimatedSprite_animation_finished():
@@ -78,10 +78,10 @@ func use_active_item():
 
 func use_hoe():
 	current_overlapping_weed = Util.get_first_overlapping_area_in_group(planting_area, "weed")
-	if current_overlapping_weed == null:
+	if current_overlapping_weed == null or current_overlapping_weed.invincible:
 		return
 
-	print_debug("playing use_hoe")
+	# print_debug("playing use_hoe")
 	animation_player.play("use_hoe")
 
 func hoe_hit():
@@ -94,7 +94,7 @@ func use_flower_box():
 		return
 
 	if not can_plant():
-		print_debug("Cannot plant, nice")
+		# print_debug("Cannot plant, nice")
 		nejde_sound.play()
 		return
 
@@ -102,32 +102,24 @@ func use_flower_box():
 
 	animated_sprite.animation = "pickup_%s" % get_facing(last_input)
 	controllable = false
-	# Flower will get planted during the frame_changed signal
-
-	# TODO: Do we have to reset the current frame?
-	# TODO: Play zasazeni sound in the middle of the animation (10th frame)
-	#			Maybe use frame_changed signal?
 
 func plant_flower():
 	var flower = flower_scene.instance()
 	flower.position = position
 
-	var root = get_node("/root/main")
+	var root = get_node("/root/main/Flowers")
 	root.add_child(flower)
-	# TODO: Keep in front of the background
-	var bg_index = root.get_node("Background").get_index()
-	root.move_child(flower, bg_index)
 
 	zasazeni_sound.play()
 	
 func swap_items():
-	# TODO: Unparent currently active item
+	# TODO: Item cannot be picked up/swapped in some cases
 	drop_item()
 	active_item = last_colliding_item
 	active_item_parent = active_item.get_parent()
+	active_item_index = active_item.get_index()
 	active_item_parent.remove_child(active_item)
 	item_mount_point.add_child(active_item)
-	# TODO: Is the position correct?
 	active_item.global_position = item_mount_point.global_position
 	last_colliding_item = null
 	pickup_sound.play()
@@ -138,6 +130,7 @@ func drop_item():
 		return
 	item_mount_point.remove_child(active_item)
 	active_item_parent.add_child(active_item)
+	active_item_parent.move_child(active_item, active_item_index)
 	active_item.position = item_drop_point.global_position
 	active_item = null
 	active_item_parent = null
@@ -183,7 +176,7 @@ func can_plant():
 
 func is_by_well():
 	var overlaps_well = Util.is_currently_overlapping_node_in_group(self, "well")
-	print_debug("Overlaps well: %s" % overlaps_well)
+	# print_debug("Overlaps well: %s" % overlaps_well)
 	return overlaps_well
 
 

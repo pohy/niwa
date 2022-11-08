@@ -19,12 +19,13 @@ func _ready():
 	available_flowers.append($"Flowers/Flower2")
 	available_flowers.append($"Flowers/Flower3")
 
-	active_flower = available_flowers[rand_range(0, available_flowers.size() - 1)]
+	var flower_index = randi() % available_flowers.size()
+	active_flower = available_flowers[flower_index]
 	growing_sprite = active_flower.get_node("GrowingSprite")
 	wilted_sprite = active_flower.get_node("WiltedSprite")
 
-	print_debug(growing_sprite)
-	print_debug(wilted_sprite)
+	# print_debug(growing_sprite)
+	# print_debug(wilted_sprite)
 
 	active_flower.visible = true
 	growing_sprite.visible = false;

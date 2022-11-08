@@ -83,7 +83,7 @@ script = ExtResource( 3 )
 position = Vector2( 960, 1080 )
 
 [node name="Logo" type="Sprite" parent="."]
-position = Vector2( 960, 540 )
+position = Vector2( 960, 449 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
