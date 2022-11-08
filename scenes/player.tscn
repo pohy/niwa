@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/placeholders/icon.png" type="Texture" id=2]
@@ -46,6 +46,40 @@
 [ext_resource path="res://assets/Postava/walk/walk_E_8.png" type="Texture" id=44]
 [ext_resource path="res://assets/Postava/walk/walk_E_7.png" type="Texture" id=45]
 [ext_resource path="res://assets/Scaling_Ref.png" type="Texture" id=46]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_13.png" type="Texture" id=47]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_15.png" type="Texture" id=48]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_5.png" type="Texture" id=49]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_16.png" type="Texture" id=50]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_14.png" type="Texture" id=51]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_1.png" type="Texture" id=52]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_17.png" type="Texture" id=53]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_11.png" type="Texture" id=54]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_2.png" type="Texture" id=55]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_4.png" type="Texture" id=56]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_3.png" type="Texture" id=57]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_6.png" type="Texture" id=58]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_7.png" type="Texture" id=59]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_8.png" type="Texture" id=60]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_9.png" type="Texture" id=61]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_10.png" type="Texture" id=62]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_12.png" type="Texture" id=63]
+[ext_resource path="res://assets/Postava/pickup/pickup_left_1.png" type="Texture" id=64]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_7.png" type="Texture" id=65]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_14.png" type="Texture" id=66]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_15.png" type="Texture" id=67]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_11.png" type="Texture" id=68]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_17.png" type="Texture" id=69]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_8.png" type="Texture" id=70]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_4.png" type="Texture" id=71]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_13.png" type="Texture" id=72]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_16.png" type="Texture" id=73]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_2.png" type="Texture" id=74]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_6.png" type="Texture" id=75]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_9.png" type="Texture" id=76]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_12.png" type="Texture" id=77]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_3.png" type="Texture" id=78]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_5.png" type="Texture" id=79]
+[ext_resource path="res://assets/Postava/pickup/pickup_right_10.png" type="Texture" id=80]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -58,6 +92,16 @@ animations = [ {
 "loop": true,
 "name": "idle_right",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 64 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 54 ), ExtResource( 63 ), ExtResource( 47 ), ExtResource( 51 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 53 ) ],
+"loop": false,
+"name": "pickup_left",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 52 ), ExtResource( 74 ), ExtResource( 78 ), ExtResource( 71 ), ExtResource( 79 ), ExtResource( 75 ), ExtResource( 65 ), ExtResource( 70 ), ExtResource( 76 ), ExtResource( 80 ), ExtResource( 68 ), ExtResource( 77 ), ExtResource( 72 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 73 ), ExtResource( 69 ) ],
+"loop": false,
+"name": "pickup_right",
+"speed": 24.0
 }, {
 "frames": [ ExtResource( 31 ), ExtResource( 32 ), ExtResource( 28 ), ExtResource( 30 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 45 ), ExtResource( 44 ) ],
 "loop": true,
@@ -72,6 +116,77 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 145, 348.333 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ItemMountPoint:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ItemMountPoint:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -196, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "use_hoe"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ItemMountPoint:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ItemMountPoint:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -196, -0.25, 0, 0.25, 0, -233, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, -196, -0.2, 180.57, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 1 )
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hoe_hit"
+} ]
+}
 
 [node name="Player" type="Area2D"]
 script = ExtResource( 1 )
@@ -89,8 +204,8 @@ texture = ExtResource( 2 )
 position = Vector2( 12, -74 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
-animation = "idle_right"
-frame = 0
+animation = "pickup_left"
+frame = 16
 speed_scale = 0.6
 playing = true
 
@@ -130,5 +245,13 @@ position = Vector2( 0, -196 )
 [node name="ItemDropPoint" type="Node2D" parent="."]
 position = Vector2( 0, -22 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 1.5
+anims/RESET = SubResource( 3 )
+anims/use_hoe = SubResource( 4 )
+
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_Player_area_exited"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
+[connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_changed"]

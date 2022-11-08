@@ -33,7 +33,9 @@
 - ~~Zooming out camera~~
   - ~~Based on progression~~
 - Player
-  - [ ] **PRIO** Pick up animation
+  - [x] Pick up animation
+    - [x] Play when planting flowers
+    - [x] When picking up/swapping/dropping items? Faster?
 - Items
   - [x] 🐛 Dropping/swapping items messes with the collision shape of flower box. WTF?!
   - [x] Let the player drop an item anywhere
