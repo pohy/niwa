@@ -86,7 +86,7 @@ autostart = true
 
 [node name="Well" parent="." instance=ExtResource( 9 )]
 position = Vector2( 994, 910 )
-scale = Vector2( 0.162577, 0.162577 )
+scale = Vector2( 0.254882, 0.254882 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 846, 907 )

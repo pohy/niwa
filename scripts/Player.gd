@@ -32,7 +32,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 
 func _process(delta: float):
-	if not controllable:
+	if not controllable or "pickup" in animated_sprite.animation:
 		return
 
 	apply_movement(delta)
@@ -63,7 +63,9 @@ func _on_Player_area_exited(area):
 		last_colliding_item = null
 
 func _on_AnimatedSprite_animation_finished():
-	controllable = true
+	# TODO: Disconnect animation finished signal
+	if "pickup" in animated_sprite.animation:
+		animated_sprite.animation = "idle_%s" % get_facing(last_input)
 
 func _on_AnimatedSprite_frame_changed():
 	if "pickup" in animated_sprite.animation and animated_sprite.frame == 10:
@@ -101,7 +103,6 @@ func use_flower_box():
 	active_item.use()
 
 	animated_sprite.animation = "pickup_%s" % get_facing(last_input)
-	controllable = false
 
 func plant_flower():
 	var flower = flower_scene.instance()
@@ -182,3 +183,7 @@ func is_by_well():
 
 func _on_AnimationPlayer_animation_changed(old_name:String, new_name:String):
 	print_debug("anim player chagned: %s -> %s" % [old_name, new_name])
+
+func disable():
+	controllable = false
+	animated_sprite.animation = "idle_%s" % get_facing(last_input)

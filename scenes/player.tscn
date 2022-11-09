@@ -204,8 +204,8 @@ texture = ExtResource( 2 )
 position = Vector2( 12, -74 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
-animation = "pickup_left"
-frame = 16
+animation = "idle_left"
+frame = 0
 speed_scale = 0.6
 playing = true
 
@@ -246,7 +246,7 @@ position = Vector2( 0, -196 )
 position = Vector2( 0, -22 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 1.75
+playback_speed = 2.5
 anims/RESET = SubResource( 3 )
 anims/use_hoe = SubResource( 4 )
 

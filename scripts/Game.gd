@@ -28,9 +28,8 @@ func _on_WeedSpawner_max_weeds_grown():
 	if end_game_started:
 		return
 	end_game_started = true
-	print_debug("all weeds grown GAME")
-	# TODO: Player is still controllable anyway?!
-	player.controllable = false
+	print_debug("all weeds grown GAME \"OVER\"")
+	player.disable()
 	fog.visible = true
 	fog.play("fade_out")
 	
