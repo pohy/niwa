@@ -63,7 +63,6 @@ func _on_Player_area_exited(area):
 		last_colliding_item = null
 
 func _on_AnimatedSprite_animation_finished():
-	# TODO: Disconnect animation finished signal
 	if "pickup" in animated_sprite.animation:
 		animated_sprite.animation = "idle_%s" % get_facing(last_input)
 

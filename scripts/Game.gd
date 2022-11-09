@@ -1,6 +1,5 @@
 extends Node
 
-# TODO: Disable player and move them somewhere in the air
 onready var fog := $Fog as AnimatedSprite
 onready var weed_spawner := $"../WeedSpawner" as WeedSpawner
 onready var player := $"../Player" as Player
@@ -25,6 +24,7 @@ func _on_Fog_animation_finished():
 
 
 func _on_WeedSpawner_max_weeds_grown():
+	# TODO: Move the player somewhere in the air?
 	if end_game_started:
 		return
 	end_game_started = true

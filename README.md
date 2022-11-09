@@ -15,8 +15,8 @@
 - How many flowers can the player spawn?
 
 ## TODO
-- End game gets triggerd when not all plevel has grown or is even growing
-  - Seems kinda fixed? Nope :D
+- [x] End game gets triggerd when not all plevel has grown or is even growing
+  - [x] Seems kinda fixed? ~~Nope~~ :D
 - Trigger final hudba in the end game
 - [x] Fade out/in keeps looping?!
 - [x] Only a single type of flower is being spawned
@@ -56,7 +56,7 @@
   - ~~After watering, it grows~~
   - ~~Track how many watering charges have been dispatched to the flower~~
   - [x] On spawn, pick from a set of growth types at random
-    - [ ] Only two of the three available seem to spawn :(
+    - [x] Only two of the three available seem to spawn :(
   - [x] Also has a wilted stage
     - [x] Despawn -> fade out and destroy
     - [x] Activates when the plevel reaches its final growth stage
@@ -69,7 +69,7 @@
   - [x] When it grows to the final stage it wilts the overlapping flowers
   - [x] 🐛 Destroying plevel skips the first growth stage
   - [x] 🐛 Plevel doesn't wilt the plant
-  - [ ] 🐛 Plevel seems to wilt too many plants, not just those that it overlaps
+  - [x] 🐛 Plevel seems to wilt too many plants, not just those that it overlaps
 - [x] Lantern boundaries
   - [x] Do not let the player go outside the screen/camera boundary
 - ~~?Meditation~~

@@ -35,15 +35,16 @@ func update_growth_stage(addition: int):
 	if next_growth_stage < 0:
 		return
 	
+	print_debug("next: %s, growth count: %s, is grown: %s" % [next_growth_stage, growth_textures.size(), is_grown()])
 	if next_growth_stage >= growth_textures.size(): # is_grown():
-		# TODO: This will emit multiple times when weed is hit and not destroyed completely
-		# TODO: The wweeds seem to need one more growth iteration/timer hit to emit the growth_finished signal and wilt the overlapping flowers
-		emit_signal("growth_finished")
 		return
 
 	current_growth_stage = next_growth_stage
 	sprite.texture = growth_textures[current_growth_stage]
 	growth_timer.start(rand_range(growth_time_range.x, growth_time_range.y))
+
+	if is_grown():
+		emit_signal("growth_finished")
 
 func stop_growth():
 	growth_timer.stop()

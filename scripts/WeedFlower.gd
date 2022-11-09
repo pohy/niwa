@@ -31,7 +31,6 @@ func hit():
 		queue_free()
 
 func _on_GrowingSprite_growth_finished():
-	# TODO: Called on hit?!
 	print_debug("received growth finished")
 	emit_signal("grown")
 	for area in get_overlapping_areas():
