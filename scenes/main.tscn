@@ -114,7 +114,7 @@ script = ExtResource( 13 )
 
 [node name="Ambient_Sound" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 7 )
-volume_db = -6.118
+volume_db = -10.0
 autoplay = true
 
 [node name="Main_music" type="AudioStreamPlayer" parent="Music"]
@@ -125,6 +125,8 @@ autoplay = true
 [node name="End_music" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 14 )
 volume_db = -6.0
+
+[node name="Tween" type="Tween" parent="Music"]
 
 [node name="Lanterns" type="Node2D" parent="."]
 

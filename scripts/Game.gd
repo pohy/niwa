@@ -3,6 +3,9 @@ extends Node
 onready var fog := $Fog as AnimatedSprite
 onready var weed_spawner := $"../WeedSpawner" as WeedSpawner
 onready var player := $"../Player" as Player
+
+
+onready var music_control := $"../Music"
 onready var exit_music := $ExitMusic as AudioStreamPlayer
 
 var end_game_started = false
@@ -20,6 +23,9 @@ func _on_Fog_animation_finished():
 		"fade_in":
 			fog.visible = false
 			player.controllable = true
+			
+			
+			#exit_music.play()
 	pass # Replace with function body.
 
 
@@ -33,6 +39,9 @@ func _on_WeedSpawner_max_weeds_grown():
 	fog.visible = true
 	fog.play("fade_out")
 	
-	exit_music.play()
+	music_control.track_swap()
+	
+	
+	
 	
 	
