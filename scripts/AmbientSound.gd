@@ -4,7 +4,7 @@ extends Node
 onready var tween_out = get_node("Tween")
 onready var wind := $Wind as AudioStreamPlayer
 
-export var transition_duration = 4.00
+export var transition_duration = 3.00
 export var transition_type = 1 # TRANS_SINE
 
 
