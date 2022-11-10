@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/vzítvěc.mp3-4dfbe05028454793ccc541645289e7a3.mp3str"
+
+[deps]
+
+source_file="res://sounds/vzítvěc.mp3"
+dest_files=[ "res://.import/vzítvěc.mp3-4dfbe05028454793ccc541645289e7a3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
